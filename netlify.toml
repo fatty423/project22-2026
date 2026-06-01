@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA routing is also handled by public/_redirects (/* -> /index.html 200),
+# duplicated here so it applies even if that file is ever removed.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
