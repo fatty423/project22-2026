@@ -176,7 +176,7 @@ export function FamilyWellness() {
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 blur-sm" />
                 <img
-                  src="/theo-koulianos-photo.png"
+                  src="/theo-koulianos-photo.jpeg"
                   alt="Theo Koulianos, Founder of A Place for Family"
                   className="relative w-64 h-72 object-cover rounded-2xl shadow-xl border-2 border-white"
                 />
