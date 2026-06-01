@@ -23,7 +23,7 @@ export function DocSclaterMemorial() {
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0">
           <img
-            src="/Jamie_Gardenofthegods.png"
+            src="/Jamie_Gardenofthegods2.jpg"
             alt="Jamie 'Doc' Sclater at Garden of the Gods"
             className="w-full h-full object-cover object-top"
           />

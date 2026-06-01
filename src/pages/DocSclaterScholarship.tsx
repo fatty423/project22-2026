@@ -136,7 +136,7 @@ export function DocSclaterScholarship() {
             <div className="relative">
               <div className="rounded-brand overflow-hidden shadow-2xl">
                 <img
-                  src="/JamieHTSO.png"
+                  src="/Jamie_HTSO_Range.jpg"
                   alt="Jamie 'Doc' Sclater instructing at ESS Academy"
                   className="w-full h-auto"
                 />

@@ -121,7 +121,7 @@ export function Home() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ filter: 'brightness(0.65)' }}
         >
-          <source src="/project22_1.mp4" type="video/mp4" />
+          <source src="/Project22_1.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />

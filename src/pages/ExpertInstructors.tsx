@@ -27,7 +27,7 @@ const instructors = [
     name: 'Jamie "Doc" Sclater',
     title: 'Senior Field Agent & Instructor',
     organization: 'ESS Academy',
-    photo: '/Jamie-Sclater.jpg',
+    photo: '/instructor-jamie-sclater.webp',
     specialty: 'Tactical Medicine & Executive Protection',
     experience: '15+ Years',
     memorial: true,
