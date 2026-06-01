@@ -59,7 +59,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="/MangoRecorder801780436.png"
+              src="/Project22_logo.png"
               alt="Project 22"
               className="h-14 w-auto"
             />

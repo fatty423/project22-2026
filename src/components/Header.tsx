@@ -50,7 +50,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center">
-            <img src="/MangoRecorder801780436.png" alt="Project 22" className="h-10 w-auto" />
+            <img src="/Project22_logo.png" alt="Project 22" className="h-10 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
