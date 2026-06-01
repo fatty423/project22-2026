@@ -1,0 +1,38 @@
+export const ROUTES: Record<string, string> = {
+  home: '/',
+  about: '/about',
+  impact: '/impact',
+  help: '/help',
+  partnership: '/partnership',
+  heroes: '/heroes',
+  portal: '/portal',
+  login: '/login',
+  contact: '/contact',
+  privacy: '/privacy',
+  terms: '/terms',
+  accessibility: '/accessibility',
+  programs: '/programs',
+  services: '/services',
+  apply: '/apply',
+  sponsor: '/sponsor',
+  donate: '/donate',
+  patches: '/partner-patches',
+  'doc-sclater': '/doc-sclater',
+  'doc-sclater-scholarship': '/doc-sclater-scholarship',
+  'admin-login': '/admin/login',
+  admin: '/admin',
+  'admin-heroes': '/admin/heroes',
+  'admin-applications': '/admin/applications',
+  'admin-messages': '/admin/messages',
+  'admin-programs': '/admin/programs',
+  'admin-testimonials': '/admin/testimonials',
+  'admin-users': '/admin/users',
+  'admin-donors': '/admin/donors',
+  'admin-hero-updates': '/admin/hero-updates',
+  'hero-login': '/hero/login',
+  'hero-portal': '/hero',
+};
+
+export function getPath(pageId: string): string {
+  return ROUTES[pageId] || '/';
+}
