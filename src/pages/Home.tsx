@@ -445,7 +445,7 @@ export function Home() {
               size="lg"
               variant="outline"
               onClick={() => navigate('heroes')}
-              className="text-lg border-2 border-white text-white hover:bg-white hover:text-brand-marine"
+              className="text-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-marine"
             >
               Sponsor a Hero
             </Button>
