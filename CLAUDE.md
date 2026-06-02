@@ -36,6 +36,45 @@ of truth; Bolt is no longer used for this site.
   Stripe secret keys live in Supabase Edge Function env, not here.
 - Work on a feature branch; only merge to `main` after `npm run build` passes and a visual check.
 
+## Git Workflow (Jeff + Jake collaboration)
+
+**Core rule: never commit or push directly to `main`.** All work goes through a feature branch
+and a reviewed pull request.
+
+### Before starting any work
+1. `git switch main`
+2. `git pull origin main` — grab anything the other person merged
+3. Confirm `git status` is clean before branching
+
+### Branch naming
+- `feat/<description>`, `fix/<description>`, `content/<description>`
+- Prefix with initials when both people are active: `jake/feat/hero-section`, `jeff/fix/nav`
+- One branch per logical change — don't pile unrelated edits
+
+### While working
+- Stage specific files (`git add <files>`), not `git add .`
+- Push early: `git push -u origin <branch-name>`
+- No force-push on shared branches (use `--force-with-lease` only on your own branch if truly needed)
+
+### Keeping your branch current
+Before testing or opening a PR:
+1. `git fetch origin`
+2. `git merge origin/main` (or `git rebase origin/main` if the branch hasn't been shared)
+3. Resolve conflicts deliberately — show both sides, ask before discarding anyone's changes
+
+### Merging to main
+1. Open a PR on GitHub (never merge locally and push to main)
+2. The other person reviews before merge
+3. `npm run build` must pass
+4. After merge, delete the branch: `git push origin --delete <branch>` + `git branch -d <branch>`
+
+### Hard stops — ask before doing any of these
+- Committing or pushing to `main` directly
+- `git push --force` or any history rewrite on a shared branch
+- `git reset --hard`, `git checkout .`, or anything that discards uncommitted work
+- Deleting branches that have not been merged
+- Resolving a merge conflict by overwriting the other person's changes
+
 ## Known TODO
 - 6 referenced images are missing from `public/` (incl. site logo `MangoRecorder801780436.png`
   and both Doc Sclater images). Recover from the live site before DNS cutover. See migration notes.
