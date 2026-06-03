@@ -26,7 +26,7 @@ const processSteps = [
     number: '04',
     icon: Handshake,
     title: 'Direct Job Placement',
-    description: 'We connect you directly with hiring partners in security, executive protection, investigations, and contracting. No job boards -- real introductions to real employers.',
+    description: 'We connect you directly with hiring partners in security, executive protection, investigations, and contracting. No job boards, real introductions to real employers.',
   },
 ];
 
@@ -62,7 +62,7 @@ export function CareerSupport() {
               Career Support
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              From training to employment -- we walk beside you every step of the way with hands-on job placement assistance
+              From training to employment, we walk beside you every step of the way with hands-on job placement assistance
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@ export function CareerSupport() {
             Your Career Starts Here
           </h2>
           <p className="text-xl mb-8 text-white/80 max-w-2xl mx-auto">
-            Do not just train -- launch a career. Apply today and let our career support team connect you with employers who value your service.
+            Do not just train, launch a career. Apply today and let our career support team connect you with employers who value your service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

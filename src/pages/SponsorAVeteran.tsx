@@ -69,7 +69,7 @@ export function SponsorAVeteran() {
             Sponsor a Hero
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed mb-10">
-            Your sponsorship gives a veteran or first responder full access to career training, certifications, job placement, and holistic support -- at no cost to them. You are not just funding a program. You are changing a life.
+            Your sponsorship gives a veteran or first responder full access to career training, certifications, job placement, and holistic support, at no cost to them. You are not just funding a program. You are changing a life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -268,7 +268,7 @@ export function SponsorAVeteran() {
             Ready to Change a Life?
           </h2>
           <p className="text-xl mb-10 text-white/80 max-w-2xl mx-auto">
-            Every veteran and first responder deserves a chance to rebuild. Your sponsorship is not just a donation -- it is a lifeline. Step up today and become the reason a hero gets a second chance.
+            Every veteran and first responder deserves a chance to rebuild. Your sponsorship is not just a donation, it is a lifeline. Step up today and become the reason a hero gets a second chance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

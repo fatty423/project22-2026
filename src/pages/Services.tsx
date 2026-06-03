@@ -22,7 +22,7 @@ const services = [
     title: 'Family Resources',
     icon: Users,
     color: 'marine',
-    description: 'A structured 12-week course designed to strengthen family bonds and equip veterans, first responders, and their loved ones with the tools for a thriving household. Service affects the entire family -- this program ensures no one rebuilds alone.',
+    description: 'A structured 12-week course designed to strengthen family bonds and equip veterans, first responders, and their loved ones with the tools for a thriving household. Service affects the entire family, this program ensures no one rebuilds alone.',
     features: [
       '12-week guided curriculum covering communication, conflict resolution, and reconnection',
       'Resources for spouses and children navigating the transition alongside our heroes',
@@ -79,7 +79,7 @@ export function Services() {
               Services for the Whole Person
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              Career training is just one piece of the puzzle. We walk alongside veterans and first responders with counseling, family support, spiritual growth, and financial guidance -- because lasting change touches every area of life.
+              Career training is just one piece of the puzzle. We walk alongside veterans and first responders with counseling, family support, spiritual growth, and financial guidance, because lasting change touches every area of life.
             </p>
           </div>
         </div>
@@ -162,7 +162,7 @@ export function Services() {
             You Don't Have to Do This Alone
           </h2>
           <p className="text-xl mb-8 text-white/80 max-w-2xl mx-auto">
-            Whether you need someone to talk to, help for your family, spiritual guidance, or a plan for your finances -- we are here. Reach out and let us walk this road with you.
+            Whether you need someone to talk to, help for your family, spiritual guidance, or a plan for your finances, we are here. Reach out and let us walk this road with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

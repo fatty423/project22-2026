@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Heart, ArrowRight, Shield, CheckCircle, Repeat, Zap } from 'lucide-react';
 import { PatchBadge } from '../components/patches/PatchBadge';
 import { useAuth } from '../lib/auth';
@@ -10,18 +11,18 @@ import { DonorRecognitionSection } from '../components/DonorRecognitionSection';
 import { useAppNavigate } from '../hooks/useAppNavigate';
 
 const PRESET_AMOUNTS = [50, 100, 300, 600, 1200, 3000];
-const SUGGESTED_MONTHLY = [25, 50, 100, 250, 500, 1000];
-const MIN_AMOUNT = 25;
+const SUGGESTED_MONTHLY = [22, 50, 100, 250, 500, 1000];
+const MIN_AMOUNT = 22;
 
 const impactMessages: Record<number, string> = {
-  25: 'Recruit — entry-level commitment. The beginning of standing watch.',
-  50: 'Pvt 1st Class — the first mark of sustained commitment. Earns physical patch.',
-  100: 'Corporal — named recognition in P22 field report.',
-  250: 'Sergeant — senior rank. P22 Leadership Summit invitation.',
-  300: 'Covers one full year at the Recruit level ($25/mo)',
-  500: 'Staff Sergeant — leading others into mission. Named on P22 Partner Wall.',
+  22: 'Recruit (Level I). Digital supporter badge, quarterly newsletter, annual report recognition.',
+  50: 'Pvt 1st Class (Level II). P22 physical patch mailed annually, plus all Level I benefits.',
+  100: 'Corporal (Level III). Named recognition in P22 field report. Annual Partner Briefing invitation.',
+  250: 'Sergeant (Level IV). Gold border marks senior rank. P22 Leadership Summit. Quarterly impact call.',
+  300: 'Covers one full year at the Recruit level ($22/mo)',
+  500: 'Staff Sergeant (Level V). Named on P22 Partner Wall. Private briefing access.',
   600: 'Covers one full year at the Pvt 1st Class level ($50/mo)',
-  1000: 'Master Sergeant — the highest individual rank. Board of Advisors.',
+  1000: 'Master Sergeant (Level VI). Highest individual rank. P22 Board of Advisors. Lifetime Veteran designation.',
   1200: 'Covers one full year at the Corporal level ($100/mo)',
   3000: 'Covers one full year at the Sergeant level ($250/mo)',
 };
@@ -34,12 +35,12 @@ function getImpactMessage(amount: number, isRecurring: boolean): string {
     return isRecurring ? `${exact} every month` : exact;
   }
 
-  if (amount < 50) return isRecurring ? 'Building toward Recruit rank ($25/mo)' : 'Helps cover training supplies';
+  if (amount < 50) return isRecurring ? 'Building toward Recruit rank ($22/mo)' : 'Helps cover training supplies';
   if (amount < 100) return isRecurring ? 'Building toward Corporal rank ($100/mo)' : 'Covers training materials and resources';
   if (amount < 250) return isRecurring ? 'Building toward Sergeant rank ($250/mo)' : 'Supports career counseling and job placement';
   if (amount < 500) return isRecurring ? 'Building toward Staff Sergeant rank ($500/mo)' : 'Funds certification fees for heroes';
   if (amount < 1000) return isRecurring ? 'Building toward Master Sergeant rank ($1,000/mo)' : 'Sponsors partial training costs';
-  return isRecurring ? 'Master Sergeant level — the highest individual honor' : 'Fully sponsors one hero\'s complete program';
+  return isRecurring ? 'Master Sergeant level, the highest individual honor' : 'Fully sponsors one hero\'s complete program';
 }
 
 function getRankForAmount(amount: number, isRecurring: boolean): string {
@@ -60,11 +61,26 @@ function getRankForAmount(amount: number, isRecurring: boolean): string {
 export function Donate() {
   const { user } = useAuth();
   const navigate = useAppNavigate();
+  const [searchParams] = useSearchParams();
   const [isRecurring, setIsRecurring] = useState(true);
-  const [selectedAmount, setSelectedAmount] = useState<number>(25);
+  const [selectedAmount, setSelectedAmount] = useState<number>(22);
   const [customAmount, setCustomAmount] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const amount = searchParams.get('amount');
+    const type = searchParams.get('type');
+    if (amount) {
+      const parsed = parseFloat(amount);
+      if (!isNaN(parsed) && parsed >= MIN_AMOUNT) {
+        setSelectedAmount(parsed);
+        setCustomAmount('');
+      }
+    }
+    if (type === 'one-time') setIsRecurring(false);
+    if (type === 'monthly') setIsRecurring(true);
+  }, [searchParams]);
 
   const activeAmount = customAmount ? parseFloat(customAmount) : selectedAmount;
   const isValidAmount = activeAmount >= MIN_AMOUNT;

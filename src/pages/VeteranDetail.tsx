@@ -260,17 +260,6 @@ export function VeteranDetail() {
                     Sponsor {veteran.first_name}
                   </Button>
                 )}
-                {veteran.video_url && (
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => setShowVideoModal(true)}
-                    className="flex items-center gap-2 !bg-transparent border-white/30 !text-white hover:!bg-white/10"
-                  >
-                    <Play className="w-5 h-5" />
-                    Watch Video
-                  </Button>
-                )}
               </div>
             </div>
           </div>
@@ -461,7 +450,7 @@ export function VeteranDetail() {
                 <ol className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-brand-marine rounded-full flex items-center justify-center text-xs font-bold text-white">1</span>
-                    <span>Choose your contribution amount -- any amount helps.</span>
+                    <span>Choose your contribution amount, any amount helps.</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-brand-marine rounded-full flex items-center justify-center text-xs font-bold text-white">2</span>

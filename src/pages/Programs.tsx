@@ -119,7 +119,7 @@ export function Programs() {
               Your Next Chapter Starts Here
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              We save lives through holistic support -- spirit, soul, and body -- with direct pathways to education, meaningful work, and family wellness for veterans and first responders.
+              We save lives through holistic support, spirit, soul, and body, with direct pathways to education, meaningful work, and family wellness for veterans and first responders.
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ export function Programs() {
               How It Works
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From first contact to career launch -- here is what your journey looks like
+              From first contact to career launch, here is what your journey looks like
             </p>
           </div>
 
@@ -164,10 +164,10 @@ export function Programs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              More Than a Job -- A New Life
+              More Than a Job, A New Life
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We help the whole family -- spiritually and practically -- through training, job placement, and ongoing support
+              We help the whole family, spiritually and practically, through training, job placement, and ongoing support
             </p>
           </div>
 
@@ -370,7 +370,7 @@ export function Programs() {
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Housing Available</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Need a place to stay during your training? We offer on-site housing for those enrolled in our programs at <span className="font-bold text-slate-900">$75 per night</span>. Focus on your training -- we will take care of the rest.
+                  Need a place to stay during your training? We offer on-site housing for those enrolled in our programs at <span className="font-bold text-slate-900">$75 per night</span>. Focus on your training, we will take care of the rest.
                 </p>
               </div>
               <div className="flex-shrink-0">

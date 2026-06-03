@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User, LogOut, ChevronDown, Heart, LayoutDashboard } from 'lucide-react';
+import { Menu, X, User, LogOut, ChevronDown, Heart, LayoutDashboard, Star } from 'lucide-react';
 import { useAuth } from '../lib/auth';
 import { supabase } from '../lib/supabase';
 import { Button } from './ui/Button';
@@ -57,20 +57,32 @@ export function Header() {
             <Link to="/" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
               Home
             </Link>
-            <Link to="/about" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
-              About
-            </Link>
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium flex items-center gap-1">
+                About
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-40 bg-white rounded-lg shadow-lg border border-slate-200 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-50 hover:text-brand-scarlet">
+                  About Us
+                </Link>
+                <Link to="/impact" className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-50 hover:text-brand-scarlet">
+                  Impact
+                </Link>
+              </div>
+            </div>
             <Link to="/programs" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
               Programs
-            </Link>
-            <Link to="/impact" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
-              Impact
             </Link>
             <Link to="/heroes" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
               Heroes
             </Link>
             <Link to="/contact" className="text-gray-700 hover:text-brand-scarlet transition-colors text-sm font-medium">
               Contact
+            </Link>
+            <Link to="/partner-patches" className="text-brand-gold hover:text-brand-scarlet transition-colors text-sm font-bold flex items-center gap-1">
+              <Star className="w-3.5 h-3.5 fill-brand-gold" />
+              Earn Your Patch
             </Link>
 
             {user ? (
@@ -155,19 +167,23 @@ export function Header() {
                 Home
               </Link>
               <Link to="/about" className="px-3 py-2 rounded-lg text-gray-700 hover:bg-slate-50 transition-colors" onClick={() => setIsMenuOpen(false)}>
-                About
+                About Us
+              </Link>
+              <Link to="/impact" className="px-3 py-2 pl-7 rounded-lg text-gray-500 hover:bg-slate-50 transition-colors text-sm" onClick={() => setIsMenuOpen(false)}>
+                Impact
               </Link>
               <Link to="/programs" className="px-3 py-2 rounded-lg text-gray-700 hover:bg-slate-50 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Programs
-              </Link>
-              <Link to="/impact" className="px-3 py-2 rounded-lg text-gray-700 hover:bg-slate-50 transition-colors" onClick={() => setIsMenuOpen(false)}>
-                Impact
               </Link>
               <Link to="/heroes" className="px-3 py-2 rounded-lg text-gray-700 hover:bg-slate-50 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Heroes
               </Link>
               <Link to="/contact" className="px-3 py-2 rounded-lg text-gray-700 hover:bg-slate-50 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Contact
+              </Link>
+              <Link to="/partner-patches" className="px-3 py-2 rounded-lg text-brand-gold font-bold hover:bg-slate-50 transition-colors flex items-center gap-1.5" onClick={() => setIsMenuOpen(false)}>
+                <Star className="w-3.5 h-3.5 fill-brand-gold" />
+                Earn Your Patch
               </Link>
 
               <div className="pt-3 mt-2 border-t border-gray-200 space-y-2">

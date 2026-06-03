@@ -132,7 +132,7 @@ export function ExpertInstructors() {
               Expert Instructors
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              Learn from seasoned professionals who have lived the career paths they teach -- bringing decades of real-world experience into every lesson
+              Learn from seasoned professionals who have lived the career paths they teach, bringing decades of real-world experience into every lesson
             </p>
           </div>
         </div>
@@ -263,7 +263,7 @@ export function ExpertInstructors() {
               </div>
             </div>
             <p className="text-xl text-slate-700 leading-relaxed italic mb-6">
-              "The instructors at Project 22 are not just teachers -- they are mentors who genuinely care about your success. Their real-world experience made every lesson relevant and every scenario feel authentic. I walked out of training ready to work, not just with a piece of paper."
+              "The instructors at Project 22 are not just teachers, they are mentors who genuinely care about your success. Their real-world experience made every lesson relevant and every scenario feel authentic. I walked out of training ready to work, not just with a piece of paper."
             </p>
             <div className="pt-4 border-t border-slate-100">
               <p className="font-bold text-slate-900">Program Graduate</p>
