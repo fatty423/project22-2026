@@ -1,19 +1,17 @@
 import { useState } from 'react';
-import { Heart, Star, Shield, GraduationCap, Award, CheckCircle, Users, ArrowRight, Clock, DollarSign } from 'lucide-react';
+import { Heart, Star, Shield, Award, CheckCircle, Users, ArrowRight, Clock, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../lib/auth';
 import { useAppNavigate } from '../hooks/useAppNavigate';
 import { createDonationCheckout } from '../lib/stripe';
 
-const SCHOLARSHIP_COST = 8650;
-
-const PRESET_AMOUNTS = [50, 100, 250, 500, 1000, SCHOLARSHIP_COST];
+const PRESET_AMOUNTS = [50, 100, 250, 500, 1000, 2500];
 
 const whatRecipientGets = [
-  'Full tuition for the 24-day All-in-One Executive Protection Advanced program ($8,650 value)',
+  'Full or partial tuition for Project 22 career development training programs',
   'Training materials, uniforms, and equipment',
-  'FL Class D, G, and Executive Protection certifications',
+  'Industry-recognized certifications aligned to your chosen career path',
   'Direct job placement assistance upon graduation',
   'Project 22 holistic wellness support (spiritual, mental, family)',
   'Alumni network access and ongoing career support',
@@ -22,7 +20,7 @@ const whatRecipientGets = [
 const eligibility = [
   'U.S. military veteran or first responder (active or retired)',
   'Demonstrate financial need or hardship',
-  'Committed to completing the full 24-day program',
+  'Committed to completing the full training program',
   'Able to travel to the training location in Florida',
   'Willing to share your story to inspire future scholarship recipients',
 ];
@@ -103,10 +101,10 @@ export function DocSclaterScholarship() {
             The "Doc" Sclater Scholarship
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            Full tuition for the All-in-One Executive Protection Advanced program at ESS Academy -- honoring Doc's legacy by continuing what he did best.
+            Funding career development training for veterans and first responders -- honoring Doc's legacy by continuing what he did best.
           </p>
           <p className="text-base text-slate-400">
-            Hosted by Project 22 &bull; Provided by ESS Academy
+            Hosted by Project 22
           </p>
         </div>
       </section>
@@ -127,10 +125,10 @@ export function DocSclaterScholarship() {
                 Jamie "Doc" Sclater believed that every veteran deserved access to world-class training and a clear path to a meaningful career after service. As a senior instructor at ESS Academy, he spent his days turning that belief into reality -- training veterans in executive protection, tactical medicine, and the full spectrum of professional security.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                The "Doc" Sclater Scholarship honors his legacy by providing full tuition for the All-in-One Executive Protection Advanced program -- ESS Academy's most comprehensive course. This is the caliber of training Doc delivered and the opportunity he fought to give others.
+                The "Doc" Sclater Scholarship honors his legacy by funding career development training for veterans and first responders through Project 22. Donations to the scholarship fund may be applied to any of the career training programs we offer -- giving recipients the flexibility to pursue the path that's right for them.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Each scholarship covers $8,650 in tuition for one veteran or first responder to complete the 24-day immersive program and graduate with the certifications, skills, and job placement support to build a career in executive protection.
+                Every dollar donated goes directly toward tuition, training materials, and the support services that help our heroes graduate with real certifications, real skills, and a real career ahead of them.
               </p>
             </div>
             <div className="relative">
@@ -140,12 +138,6 @@ export function DocSclaterScholarship() {
                   alt="Jamie 'Doc' Sclater instructing at ESS Academy"
                   className="w-full h-auto"
                 />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-brand shadow-xl p-6 border border-slate-200">
-                <div className="text-center">
-                  <p className="text-3xl font-display text-brand-scarlet">$8,650</p>
-                  <p className="text-sm text-slate-600 mt-1">Full Scholarship Value</p>
-                </div>
               </div>
             </div>
           </div>
@@ -160,7 +152,7 @@ export function DocSclaterScholarship() {
               What Scholarship Recipients Receive
             </h3>
             <p className="text-lg text-slate-600">
-              Everything needed to complete the program and launch a career in executive protection
+              Everything needed to complete your training and launch a new career
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -172,24 +164,27 @@ export function DocSclaterScholarship() {
             ))}
           </div>
 
-          {/* Program Details Card */}
-          <div className="mt-12 bg-white rounded-brand border-2 border-brand-marine/20 p-8">
+          {/* ESS Academy Partner Donation */}
+          <div className="mt-12 bg-white rounded-brand border-2 border-brand-gold/40 p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-brand-gold/10 px-4 py-1 rounded-bl-brand">
+              <span className="text-xs font-semibold text-brand-gold uppercase tracking-wider">Partner Contribution</span>
+            </div>
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-20 h-20 bg-brand-marine rounded-full flex items-center justify-center flex-shrink-0">
-                <GraduationCap className="w-10 h-10 text-white" />
+              <div className="w-20 h-20 bg-brand-gold rounded-full flex items-center justify-center flex-shrink-0">
+                <Shield className="w-10 h-10 text-white" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h4 className="text-2xl font-display text-slate-900 mb-2">All-in-One Executive Protection Advanced</h4>
-                <p className="text-slate-600 mb-3">ESS Academy's most comprehensive program -- full immersion training covering every aspect of executive protection.</p>
+                <h4 className="text-2xl font-display text-slate-900 mb-2">ESS Academy — Training Partner</h4>
+                <p className="text-slate-600 mb-3">ESS Academy has donated one full All-in-One Executive Protection Advanced training to the Doc Sclater Scholarship -- a 24-day immersive program valued at $8,650 covering every aspect of executive protection.</p>
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">
                   <span className="flex items-center gap-1 text-slate-600">
-                    <Clock className="w-4 h-4 text-brand-marine" /> 24 Days
+                    <DollarSign className="w-4 h-4 text-brand-gold" /> $8,650 Value
                   </span>
                   <span className="flex items-center gap-1 text-slate-600">
-                    <DollarSign className="w-4 h-4 text-brand-marine" /> $8,650 Tuition
+                    <Clock className="w-4 h-4 text-brand-gold" /> 24-Day Program
                   </span>
                   <span className="flex items-center gap-1 text-slate-600">
-                    <Award className="w-4 h-4 text-brand-marine" /> D, G, EP Certifications
+                    <Award className="w-4 h-4 text-brand-gold" /> 12 Certifications + Diploma
                   </span>
                 </div>
               </div>
@@ -228,10 +223,10 @@ export function DocSclaterScholarship() {
                 Take the First Step
               </h3>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Apply through Project 22's scholarship application. Select the All-in-One Executive Protection Advanced program and mention the "Doc" Sclater Scholarship in your application.
+                Apply through Project 22's scholarship application and mention the "Doc" Sclater Scholarship. You'll have the opportunity to choose from any of the career development training programs we offer.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Our team will review your background, service history, and goals. Recipients are selected based on need, commitment, and readiness to complete the program.
+                Our team will review your background, service history, and goals. Recipients are selected based on need, commitment, and readiness to complete their chosen program.
               </p>
               <Button
                 size="lg"
@@ -254,7 +249,7 @@ export function DocSclaterScholarship() {
               Fund Doc's Legacy
             </h3>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Every dollar donated goes directly to funding scholarships for veterans entering the AIO Executive Protection program. One full scholarship is ${SCHOLARSHIP_COST.toLocaleString()}.
+              Every dollar donated goes directly to funding career development training for veterans and first responders through Project 22.
             </p>
           </div>
 
@@ -271,9 +266,6 @@ export function DocSclaterScholarship() {
                   }`}
                 >
                   <span className="text-lg">${amount.toLocaleString()}</span>
-                  {amount === SCHOLARSHIP_COST && (
-                    <span className="block text-xs mt-1 text-brand-gold font-medium">Full Scholarship</span>
-                  )}
                 </button>
               ))}
             </div>
@@ -298,9 +290,7 @@ export function DocSclaterScholarship() {
             {activeAmount > 0 && (
               <div className="mb-6 bg-brand-marine/5 rounded-brand p-4">
                 <p className="text-sm text-slate-600">
-                  {activeAmount >= SCHOLARSHIP_COST
-                    ? 'Your donation funds one complete scholarship for a veteran.'
-                    : `Your donation covers ${Math.round((activeAmount / SCHOLARSHIP_COST) * 100)}% of a full scholarship.`}
+                  Your donation goes directly toward career development training for a veteran or first responder.
                 </p>
               </div>
             )}
