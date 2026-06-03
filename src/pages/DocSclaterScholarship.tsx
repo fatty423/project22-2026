@@ -13,7 +13,7 @@ const PRESET_AMOUNTS = [50, 100, 250, 500, 1000, SCHOLARSHIP_COST];
 const whatRecipientGets = [
   'Full tuition for the 24-day All-in-One Executive Protection Advanced program ($8,650 value)',
   'Training materials, uniforms, and equipment',
-  'FL Class D, G, and Executive Protection certifications',
+  '12 industry certifications and a diploma from a DOE/CIE-accredited academy',
   'Direct job placement assistance upon graduation',
   'Project 22 holistic wellness support (spiritual, mental, family)',
   'Alumni network access and ongoing career support',
@@ -189,7 +189,7 @@ export function DocSclaterScholarship() {
                     <DollarSign className="w-4 h-4 text-brand-marine" /> $8,650 Tuition
                   </span>
                   <span className="flex items-center gap-1 text-slate-600">
-                    <Award className="w-4 h-4 text-brand-marine" /> D, G, EP Certifications
+                    <Award className="w-4 h-4 text-brand-marine" /> 12 Certifications + Diploma
                   </span>
                 </div>
               </div>
