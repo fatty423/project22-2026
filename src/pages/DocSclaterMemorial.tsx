@@ -56,13 +56,13 @@ export function DocSclaterMemorial() {
                 A Warrior, Healer, and Teacher
               </h3>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                In the Navy, Hospital Corpsmen who serve alongside Marines earn a title that no certificate can grant — they are called "Doc." It is a name given by the warriors they keep alive, a title of trust forged under fire. Jamie earned that name across multiple combat deployments in Iraq and Afghanistan as an FMF Hospital Corpsman over 11.5 years of dedicated service.
+                In the Navy, Hospital Corpsmen who serve alongside Marines earn a title that no certificate can grant, they are called "Doc." It is a name given by the warriors they keep alive, a title of trust forged under fire. Jamie earned that name across multiple combat deployments in Iraq and Afghanistan as an FMF Hospital Corpsman over 11.5 years of dedicated service.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Beyond the battlefield, Jamie was a world-class athlete. As a member of Team USA's Paralympic swim team, he set 9 American records — proving that his competitive fire and discipline extended far beyond the military. He brought that same relentless standard to everything he did.
+                Beyond the battlefield, Jamie was a world-class athlete. As a member of Team USA's Paralympic swim team, he set 9 American records, proving that his competitive fire and discipline extended far beyond the military. He brought that same relentless standard to everything he did.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                To those who knew him, Doc was the man who showed up. He was the instructor who stayed late, the teammate who called when things got quiet, the friend who checked in when no one else thought to. He carried others — it was simply who he was.
+                To those who knew him, Doc was the man who showed up. He was the instructor who stayed late, the teammate who called when things got quiet, the friend who checked in when no one else thought to. He carried others, it was simply who he was.
               </p>
             </div>
             <div className="relative">
@@ -110,13 +110,13 @@ export function DocSclaterMemorial() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                After his military service, Jamie brought his expertise to ESS Academy as Senior Field Agent and Instructor. Specializing in Tactical Medicine and Executive Protection, he became one of the most respected instructors in the program — the kind of teacher who demanded excellence because he lived it.
+                After his military service, Jamie brought his expertise to ESS Academy as Senior Field Agent and Instructor. Specializing in Tactical Medicine and Executive Protection, he became one of the most respected instructors in the program, the kind of teacher who demanded excellence because he lived it.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Doc's military medical training and tactical expertise made him uniquely qualified to train students in the realities of high-threat security operations. He didn't teach from a textbook. He taught from lived experience — from combat deployments, from protecting lives under pressure, from years of operating where the stakes were life and death.
+                Doc's military medical training and tactical expertise made him uniquely qualified to train students in the realities of high-threat security operations. He didn't teach from a textbook. He taught from lived experience, from combat deployments, from protecting lives under pressure, from years of operating where the stakes were life and death.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Through ESS Academy, Jamie helped dozens of veterans and first responders find new purpose after service. He showed them that the skills forged in uniform could become a powerful career — and a reason to keep moving forward.
+                Through ESS Academy, Jamie helped dozens of veterans and first responders find new purpose after service. He showed them that the skills forged in uniform could become a powerful career, and a reason to keep moving forward.
               </p>
             </div>
             <div className="space-y-6">
@@ -127,7 +127,7 @@ export function DocSclaterMemorial() {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-1">Senior Field Agent & Instructor</h4>
-                    <p className="text-slate-600 text-sm">ESS Academy — Tactical Medicine & Executive Protection</p>
+                    <p className="text-slate-600 text-sm">ESS Academy, Tactical Medicine & Executive Protection</p>
                   </div>
                 </div>
               </Card>
@@ -169,10 +169,10 @@ export function DocSclaterMemorial() {
           </div>
           <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
             <p>
-              Jamie died by suicide. We do not soften that truth — because softening it is part of what kills. The number "22" in our name represents the more than 22 veterans and first responders who take their own lives every single day in this country. Doc became one of them.
+              Jamie died by suicide. We do not soften that truth, because softening it is part of what kills. The number "22" in our name represents the more than 22 veterans and first responders who take their own lives every single day in this country. Doc became one of them.
             </p>
             <p>
-              He spent his life standing for others. On the battlefield, he kept Marines alive. In the classroom, he gave veterans a reason to build something new. And yet, the invisible war that so many carry home — the one nobody sees, the one that doesn't show up on a scan or earn a medal — that war took him from us.
+              He spent his life standing for others. On the battlefield, he kept Marines alive. In the classroom, he gave veterans a reason to build something new. And yet, the invisible war that so many carry home, the one nobody sees, the one that doesn't show up on a scan or earn a medal, that war took him from us.
             </p>
             <p className="text-white font-medium">
               Now we stand for him. And for every warrior still fighting a battle no one can see.
@@ -186,7 +186,7 @@ export function DocSclaterMemorial() {
               Need someone to pray with you?
             </p>
             <p className="text-slate-300 mb-4">
-              The JoyFM Prayer Center — Someone is ready to listen and pray, anytime.
+              The JoyFM Prayer Center, Someone is ready to listen and pray, anytime.
             </p>
             <a
               href="tel:8778007729"

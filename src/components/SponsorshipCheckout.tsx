@@ -103,7 +103,7 @@ export function SponsorshipCheckout({ veteran, isOpen, onClose }: SponsorshipChe
               {veteran.first_name} {veteran.last_initial}.
             </h3>
             <p className="text-slate-600 text-sm mb-1">
-              {veteran.military_branch} — {veteran.current_location}
+              {veteran.military_branch} | {veteran.current_location}
             </p>
             <p className="text-sm text-slate-500">
               <span className="font-medium">Career Goal:</span> {veteran.career_goals}

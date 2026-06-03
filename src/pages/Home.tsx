@@ -180,7 +180,7 @@ export function Home() {
                 onClick={() => navigate('apply')}
                 className="text-lg font-bold flex items-center justify-center gap-2 px-8 py-6 bg-white/95 hover:bg-white text-brand-marine border-2 border-white shadow-2xl transition-all duration-300 hover:scale-105"
               >
-                Get Started — Apply Now
+                Get Started, Apply Now
                 <ArrowRight className="w-6 h-6" />
               </Button>
             </div>

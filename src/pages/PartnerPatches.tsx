@@ -44,7 +44,7 @@ const patchSeries = [
     shape: 'Shield',
     donorType: 'Individual Partners',
     monthlyAmount: '$25 – $1,000/month',
-    description: 'The Watchman Series recognizes individual donors — veterans, first responders, family members, and mission-aligned citizens who personally invest in the P22 mission. Patches use the heraldic shield shape with a scarlet red border. Rank insignia follows U.S. Army enlisted chevron tradition.',
+    description: 'The Watchman Series recognizes individual donors, veterans, first responders, family members, and mission-aligned citizens who personally invest in the P22 mission. Patches use the heraldic shield shape with a scarlet red border. Rank insignia follows U.S. Army enlisted chevron tradition.',
     ranks: [
       { rank: 'recruit', label: 'Recruit', amount: '$25/mo', annual: '$300/yr' },
       { rank: 'pvt-1st-class', label: 'Pvt 1st Class', amount: '$50/mo', annual: '$600/yr' },
@@ -60,7 +60,7 @@ const patchSeries = [
     shape: 'Circle',
     donorType: 'Church / Ministry Partners',
     monthlyAmount: '$500 – $15,000/year',
-    description: 'The Covenant Series honors churches, ministries, and faith-based organizations that mobilize their congregation behind the P22 mission. The circular patch shape reflects covenant unity — the unbroken commitment of a congregation. A gold border on all church patches reflects the eternal covenant of service.',
+    description: 'The Covenant Series honors churches, ministries, and faith-based organizations that mobilize their congregation behind the P22 mission. The circular patch shape reflects covenant unity, the unbroken commitment of a congregation. A gold border on all church patches reflects the eternal covenant of service.',
     ranks: [
       { rank: 'field-chapel', label: 'Field Chapel', amount: '$500/yr', annual: '' },
       { rank: 'mission-chapel', label: 'Mission Chapel', amount: '$1,500/yr', annual: '' },
@@ -75,7 +75,7 @@ const patchSeries = [
     shape: 'Pentagon',
     donorType: 'Business / Corporate Partners',
     monthlyAmount: '$1,000 – $50,000/year',
-    description: 'The Vanguard Series is built for businesses and corporate partners. The pentagon patch shape is a direct reference to the U.S. Pentagon — the command structure of American military force. Insignia follows the U.S. officer rank tradition: bars, leaves, and stars.',
+    description: 'The Vanguard Series is built for businesses and corporate partners. The pentagon patch shape is a direct reference to the U.S. Pentagon, the command structure of American military force. Insignia follows the U.S. officer rank tradition: bars, leaves, and stars.',
     ranks: [
       { rank: 'field-ally', label: 'Field Ally', amount: '$1,000/yr', annual: '' },
       { rank: 'tactical-partner', label: 'Tactical Partner', amount: '$5,000/yr', annual: '' },
@@ -107,7 +107,7 @@ export function PartnerPatches() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-16 h-1 bg-brand-scarlet mx-auto mb-8" />
           <p className="text-sm font-display tracking-[0.2em] text-brand-gold mb-4">
-            SECTION 12 — PROGRAMS & GIVING
+            SECTION 12, PROGRAMS & GIVING
           </p>
           <h1 className="text-4xl md:text-6xl font-display text-white mb-6">
             JOIN THE MISSION
@@ -130,7 +130,7 @@ export function PartnerPatches() {
             </h2>
             <div className="w-12 h-1 bg-brand-gold mx-auto mb-6" />
             <p className="text-lg text-slate-600 max-w-2xl mx-auto font-body">
-              Your monthly commitment earns rank through sustained giving. Rank is evaluated annually — sustain or increase to advance.
+              Your monthly commitment earns rank through sustained giving. Rank is evaluated annually, sustain or increase to advance.
             </p>
           </div>
 

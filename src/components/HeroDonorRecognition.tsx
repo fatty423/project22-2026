@@ -139,7 +139,7 @@ export function HeroDonorRecognition({ veteranId, veteranFirstName }: HeroDonorR
               </p>
               <p className="text-xs text-slate-600 mt-0.5">
                 ${Number(topDonor.total_amount).toFixed(0)} contributed
-                {topDonor.is_monthly && ' — monthly'}
+                {topDonor.is_monthly && ' (monthly)'}
               </p>
             </div>
           )}

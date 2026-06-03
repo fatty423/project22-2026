@@ -14,14 +14,14 @@ const SUGGESTED_MONTHLY = [25, 50, 100, 250, 500, 1000];
 const MIN_AMOUNT = 25;
 
 const impactMessages: Record<number, string> = {
-  25: 'Recruit — entry-level commitment. The beginning of standing watch.',
-  50: 'Pvt 1st Class — the first mark of sustained commitment. Earns physical patch.',
-  100: 'Corporal — named recognition in P22 field report.',
-  250: 'Sergeant — senior rank. P22 Leadership Summit invitation.',
+  25: 'Recruit, entry-level commitment. The beginning of standing watch.',
+  50: 'Pvt 1st Class, the first mark of sustained commitment. Earns physical patch.',
+  100: 'Corporal, named recognition in P22 field report.',
+  250: 'Sergeant, senior rank. P22 Leadership Summit invitation.',
   300: 'Covers one full year at the Recruit level ($25/mo)',
-  500: 'Staff Sergeant — leading others into mission. Named on P22 Partner Wall.',
+  500: 'Staff Sergeant, leading others into mission. Named on P22 Partner Wall.',
   600: 'Covers one full year at the Pvt 1st Class level ($50/mo)',
-  1000: 'Master Sergeant — the highest individual rank. Board of Advisors.',
+  1000: 'Master Sergeant, the highest individual rank. Board of Advisors.',
   1200: 'Covers one full year at the Corporal level ($100/mo)',
   3000: 'Covers one full year at the Sergeant level ($250/mo)',
 };
@@ -39,7 +39,7 @@ function getImpactMessage(amount: number, isRecurring: boolean): string {
   if (amount < 250) return isRecurring ? 'Building toward Sergeant rank ($250/mo)' : 'Supports career counseling and job placement';
   if (amount < 500) return isRecurring ? 'Building toward Staff Sergeant rank ($500/mo)' : 'Funds certification fees for heroes';
   if (amount < 1000) return isRecurring ? 'Building toward Master Sergeant rank ($1,000/mo)' : 'Sponsors partial training costs';
-  return isRecurring ? 'Master Sergeant level — the highest individual honor' : 'Fully sponsors one hero\'s complete program';
+  return isRecurring ? 'Master Sergeant level, the highest individual honor' : 'Fully sponsors one hero\'s complete program';
 }
 
 function getRankForAmount(amount: number, isRecurring: boolean): string {
