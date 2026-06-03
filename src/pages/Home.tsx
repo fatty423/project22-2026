@@ -126,7 +126,7 @@ export function Home() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col justify-center" style={{ minHeight: '90vh' }}>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col justify-center" style={{ minHeight: '80vh' }}>
           <div className="text-center max-w-5xl mx-auto">
             <h1
               className="text-4xl md:text-5xl lg:text-7xl font-display mb-6 leading-tight uppercase tracking-tight"
@@ -175,10 +175,9 @@ export function Home() {
                 Join the Mission
               </Button>
               <Button
-                variant="outline"
                 size="lg"
                 onClick={() => navigate('apply')}
-                className="text-lg font-bold flex items-center justify-center gap-2 px-8 py-6 bg-white/95 hover:bg-white text-brand-marine border-2 border-white shadow-2xl transition-all duration-300 hover:scale-105"
+                className="text-lg font-bold flex items-center justify-center gap-2 px-8 py-6 bg-white/95 hover:bg-white text-brand-marine hover:text-brand-marine shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 Get Started, Apply Now
                 <ArrowRight className="w-6 h-6" />
@@ -186,27 +185,37 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Doc Sclater Memorial Banner */}
-      <Link
-        to="/doc-sclater"
-        className="block bg-slate-900 hover:bg-slate-800 transition-colors duration-200 border-b border-brand-gold/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center justify-center gap-3">
-          <Star className="w-6 h-6 text-brand-gold fill-brand-gold flex-shrink-0" />
-          <span className="text-lg font-semibold text-white">
-            In Memory of Jamie "Doc" Sclater
-          </span>
-          <span className="text-sm text-slate-300">
-            USMC Scout Sniper &bull; Navy Corpsman &bull; ESS Academy Instructor &bull; Fallen Hero
-          </span>
-          <span className="inline-flex items-center gap-2 mt-2 text-sm font-medium text-brand-gold hover:text-brand-gold/80 transition-colors">
-            Learn More About the Doc Sclater Scholarship
-            <ArrowRight className="w-4 h-4" />
-          </span>
-        </div>
-      </Link>
+        {/* Doc Sclater Memorial Banner */}
+        <Link
+          to="/doc-sclater"
+          className="relative z-10 block bg-slate-900/90 backdrop-blur-sm hover:bg-slate-900 transition-colors duration-200 border-t border-brand-gold/30"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center justify-center gap-3">
+            <img
+              src="/Jamie_HTSO_BIGRED.jpeg"
+              alt="Jamie 'Doc' Sclater"
+              className="w-16 h-16 rounded-full object-cover border-2 border-brand-gold/50"
+            />
+            <div className="flex items-center gap-4">
+              <Star className="w-5 h-5 text-brand-gold fill-brand-gold flex-shrink-0" />
+              <Star className="w-5 h-5 text-brand-gold fill-brand-gold flex-shrink-0" />
+              <span className="text-2xl md:text-3xl font-display font-bold text-white text-center">
+                In Memory of Jamie "Doc" Sclater
+              </span>
+              <Star className="w-5 h-5 text-brand-gold fill-brand-gold flex-shrink-0" />
+              <Star className="w-5 h-5 text-brand-gold fill-brand-gold flex-shrink-0" />
+            </div>
+            <span className="text-sm text-slate-300">
+              USMC Scout Sniper &bull; Navy Corpsman &bull; ESS Academy Instructor &bull; Fallen Hero
+            </span>
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-gold/80 transition-colors">
+              Learn More About the Doc Sclater Scholarship
+              <ArrowRight className="w-4 h-4" />
+            </span>
+          </div>
+        </Link>
+      </section>
 
       <section className="py-16 bg-white border-b-2 border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -445,7 +454,7 @@ export function Home() {
               size="lg"
               variant="outline"
               onClick={() => navigate('heroes')}
-              className="text-lg border-2 border-white text-white hover:bg-white hover:text-brand-marine"
+              className="text-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-marine"
             >
               Sponsor a Hero
             </Button>

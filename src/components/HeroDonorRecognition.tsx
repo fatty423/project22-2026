@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Heart, Award, Loader2, Sparkles } from 'lucide-react';
 import { Card } from './ui/Card';
+import { PatchBadge } from './patches/PatchBadge';
 import { supabase } from '../lib/supabase';
 
 type HeroDonor = {
@@ -46,6 +47,15 @@ function getTier(amount: number): { label: string; badge: string; text: string; 
     text: 'text-brand-marine',
     ring: 'ring-brand-marine/20',
   };
+}
+
+function getWatchmanRank(amount: number): string {
+  if (amount >= 12000) return 'master-sergeant';
+  if (amount >= 6000) return 'staff-sergeant';
+  if (amount >= 3000) return 'sergeant';
+  if (amount >= 1200) return 'corporal';
+  if (amount >= 600) return 'pvt-1st-class';
+  return 'recruit';
 }
 
 function getInitials(name: string): string {
@@ -152,10 +162,10 @@ export function HeroDonorRecognition({ veteranId, veteranFirstName }: HeroDonorR
                   key={`${donor.donor_display_name}-${idx}`}
                   className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group"
                 >
-                  <div
-                    className={`flex-shrink-0 w-10 h-10 rounded-full ${tier.badge} flex items-center justify-center text-white font-bold text-sm shadow-sm ring-2 ${tier.ring} ring-offset-1`}
-                  >
-                    {getInitials(donor.donor_display_name)}
+                  <div className="flex-shrink-0">
+                    <span title={`$${Number(donor.total_amount).toFixed(0)} contributed`} className="cursor-pointer">
+                      <PatchBadge series="watchman" rank={getWatchmanRank(Number(donor.total_amount))} size={36} />
+                    </span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">

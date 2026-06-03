@@ -365,17 +365,6 @@ export function VeteranDirectory() {
                   </div>
 
                   <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
-                    {hero.video_url && (
-                      <Button
-                        fullWidth
-                        variant="outline"
-                        onClick={() => handleVideoClick(hero.video_url!)}
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Play className="w-4 h-4" />
-                        Watch Video
-                      </Button>
-                    )}
                     {hero.is_sponsored ? (
                       <Button
                         fullWidth

@@ -260,17 +260,6 @@ export function VeteranDetail() {
                     Sponsor {veteran.first_name}
                   </Button>
                 )}
-                {veteran.video_url && (
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => setShowVideoModal(true)}
-                    className="flex items-center gap-2 !bg-transparent border-white/30 !text-white hover:!bg-white/10"
-                  >
-                    <Play className="w-5 h-5" />
-                    Watch Video
-                  </Button>
-                )}
               </div>
             </div>
           </div>

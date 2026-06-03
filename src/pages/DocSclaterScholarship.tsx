@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Heart, Star, Shield, Award, CheckCircle, Users, ArrowRight, Clock, DollarSign } from 'lucide-react';
+import { PatchBadge } from '../components/patches/PatchBadge';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../lib/auth';
@@ -170,10 +171,11 @@ export function DocSclaterScholarship() {
               <span className="text-xs font-semibold text-brand-gold uppercase tracking-wider">Annual Partner Contribution</span>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-20 h-20 bg-brand-gold rounded-full flex items-center justify-center flex-shrink-0">
-                <Shield className="w-10 h-10 text-white" />
-              </div>
+              <PatchBadge series="vanguard" rank="general-partner" size={100} className="flex-shrink-0" />
               <div className="flex-1 text-center md:text-left">
+                <div className="flex items-center gap-3 justify-center md:justify-start mb-2">
+                  <img src="/ESS-Horizontal.png" alt="ESS Academy" className="h-10 w-auto" />
+                </div>
                 <h4 className="text-2xl font-display text-slate-900 mb-2">ESS Academy, Training Partner</h4>
                 <p className="text-slate-600 mb-3">ESS Academy donates one full All-in-One Executive Protection Advanced training each year to the Doc Sclater Scholarship, a 24-day immersive program valued at $8,650 covering every aspect of executive protection.</p>
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">

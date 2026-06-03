@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Building2, Users, GraduationCap, Church, CheckCircle, Mail, Shield, Heart, Loader2, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PatchBadge } from '../components/patches/PatchBadge';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -11,9 +13,18 @@ import type { Database } from '../lib/supabase';
 
 type Partner = Database['public']['Tables']['partners']['Row'];
 
+const partnerPatchMap: Record<string, { series: 'watchman' | 'covenant' | 'vanguard'; rank: string; level: string }> = {
+  'ess-academy': { series: 'vanguard', rank: 'general-partner', level: 'General Partner, Level V ($50,000+/yr)' },
+  'fourth-watch': { series: 'vanguard', rank: 'tactical-partner', level: 'Tactical Partner, Level II ($5,000/yr)' },
+  'ksa': { series: 'vanguard', rank: 'tactical-partner', level: 'Tactical Partner, Level II ($5,000/yr)' },
+  'a-place-for-the-family': { series: 'covenant', rank: 'regimental-chapel', level: 'Regimental Chapel, Level IV ($7,500/yr)' },
+  'fellowship-of-believers': { series: 'covenant', rank: 'mission-chapel', level: 'Mission Chapel, Level II ($1,500/yr)' },
+};
+
 function PartnerCard({ partner }: { partner: Partner }) {
   const hasLogo = !!partner.logo_url;
   const services = partner.services_provided.split(',').map((s) => s.trim());
+  const patch = partnerPatchMap[partner.slug];
 
   return (
     <div id={partner.slug} className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 scroll-mt-24">
@@ -84,6 +95,19 @@ function PartnerCard({ partner }: { partner: Partner }) {
             Visit Website
             <ExternalLink className="w-4 h-4" />
           </a>
+        )}
+
+        {patch && (
+          <div className="border-t border-slate-100 mt-6 pt-5 flex flex-col items-center gap-1">
+            <Link to={`/partner-patches#${patch.series}`} className="relative group cursor-pointer hover:scale-105 transition-transform">
+              <PatchBadge series={patch.series} rank={patch.rank} size={72} />
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                {patch.level} — Click to learn more
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900" />
+              </div>
+            </Link>
+            <span className="text-xs font-semibold text-brand-gold">{patch.level}</span>
+          </div>
         )}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Heart, Star, Shield, Award, Phone, ArrowRight, Users } from 'lucide-react';
+import { PatchBadge } from '../components/patches/PatchBadge';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
@@ -37,9 +38,16 @@ export function DocSclaterMemorial() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display uppercase tracking-wide mb-4">
             Jamie "Doc" Sclater
           </h1>
-          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed mb-8">
             U.S. Navy FMF Hospital Corpsman &bull; USMC Scout Sniper &bull; ESS Academy Senior Instructor &bull; Fallen Hero
           </p>
+          <Link
+            to="/doc-sclater-scholarship#donate"
+            className="inline-flex items-center justify-center h-12 px-6 text-lg font-semibold rounded-brand bg-brand-gold hover:bg-brand-gold/90 text-slate-900 transition-colors"
+          >
+            Donate to the Fund
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </section>
 
@@ -56,7 +64,7 @@ export function DocSclaterMemorial() {
                 A Warrior, Healer, and Teacher
               </h3>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                In the Navy, Hospital Corpsmen who serve alongside Marines earn a title that no certificate can grant, they are called "Doc." It is a name given by the warriors they keep alive, a title of trust forged under fire. Jamie earned that name across multiple combat deployments in Iraq and Afghanistan as an FMF Hospital Corpsman over 11.5 years of dedicated service.
+                In the Navy, Hospital Corpsmen who serve alongside Marines earn a title that no certificate can grant, they are called "Doc." It is a name given by the warriors they keep alive, a title of trust forged under fire. Jamie earned that name across multiple combat deployments in Iraq and Afghanistan as an FMF Hospital Corpsman over 11.5 years of dedicated service. He also completed the Marine Scout Sniper School as a Navy Corpsman, a rare and extraordinary achievement that only a select few in military history have ever accomplished.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
                 Beyond the battlefield, Jamie was a world-class athlete. As a member of Team USA's Paralympic swim team, he set 9 American records, proving that his competitive fire and discipline extended far beyond the military. He brought that same relentless standard to everything he did.
@@ -116,18 +124,19 @@ export function DocSclaterMemorial() {
                 Doc's military medical training and tactical expertise made him uniquely qualified to train students in the realities of high-threat security operations. He didn't teach from a textbook. He taught from lived experience, from combat deployments, from protecting lives under pressure, from years of operating where the stakes were life and death.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Through ESS Academy, Jamie helped dozens of veterans and first responders find new purpose after service. He showed them that the skills forged in uniform could become a powerful career, and a reason to keep moving forward.
+                Through ESS Academy, Jamie helped hundreds of veterans and first responders find new purpose after service. He showed them that the skills forged in uniform could become a powerful career, and a reason to keep moving forward.
               </p>
             </div>
             <div className="space-y-6">
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-brand-marine/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-brand-marine" />
-                  </div>
+                  <PatchBadge series="vanguard" rank="general-partner" size={56} className="flex-shrink-0" />
                   <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <img src="/ESS-Horizontal.png" alt="ESS Academy" className="h-6 w-auto" />
+                    </div>
                     <h4 className="font-bold text-slate-900 mb-1">Senior Field Agent & Instructor</h4>
-                    <p className="text-slate-600 text-sm">ESS Academy, Tactical Medicine & Executive Protection</p>
+                    <p className="text-slate-600 text-sm">Tactical Medicine & Executive Protection</p>
                   </div>
                 </div>
               </Card>
@@ -169,7 +178,7 @@ export function DocSclaterMemorial() {
           </div>
           <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
             <p>
-              Jamie died by suicide. We do not soften that truth, because softening it is part of what kills. The number "22" in our name represents the more than 22 veterans and first responders who take their own lives every single day in this country. Doc became one of them.
+              Jamie took his own life. We do not soften that truth, because softening it is part of what kills. The number "22" in our name represents the more than 22 veterans and first responders who take their own lives every single day in this country. Doc became one of them.
             </p>
             <p>
               He spent his life standing for others. On the battlefield, he kept Marines alive. In the classroom, he gave veterans a reason to build something new. And yet, the invisible war that so many carry home, the one nobody sees, the one that doesn't show up on a scan or earn a medal, that war took him from us.

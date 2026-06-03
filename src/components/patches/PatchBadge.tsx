@@ -5,305 +5,12 @@ interface PatchBadgeProps {
   className?: string;
 }
 
-const seriesColors = {
-  watchman: { fill: '#001E2E', border: '#940000', gold: '#84754E', text: '#FFFFFF' },
-  covenant: { fill: '#001E2E', border: '#84754E', gold: '#84754E', text: '#FFFFFF' },
-  vanguard: { fill: '#1a1a2e', border: '#84754E', gold: '#84754E', text: '#FFFFFF' },
-};
-
-// Watchman: Army chevron rendering
-function WatchmanChevrons({ rank, cx, cy }: { rank: string; cx: number; cy: number }) {
-  const gold = '#84754E';
-  const w = 28;
-  const chevronH = 8;
-  const gap = 3;
-
-  if (rank === 'recruit') {
-    // Single horizontal service bar
-    return <rect x={cx - 14} y={cy} width={28} height={4} fill={gold} />;
-  }
-
-  const chevronCount =
-    rank === 'pvt-1st-class' ? 1 :
-    rank === 'corporal' ? 2 :
-    rank === 'sergeant' ? 3 :
-    rank === 'staff-sergeant' ? 3 :
-    rank === 'master-sergeant' ? 3 : 0;
-
-  const rockerCount =
-    rank === 'staff-sergeant' ? 1 :
-    rank === 'master-sergeant' ? 2 : 0;
-
-  if (chevronCount === 0) return null;
-
-  const totalH = chevronCount * (chevronH + gap) + (rockerCount > 0 ? rockerCount * (chevronH + gap) + 4 : 0);
-  const startY = cy - totalH / 2;
-
-  return (
-    <g>
-      {/* Chevrons (point up) */}
-      {Array.from({ length: chevronCount }).map((_, i) => {
-        const y = startY + i * (chevronH + gap);
-        return (
-          <path
-            key={`c-${i}`}
-            d={`M${cx - w / 2},${y + chevronH} L${cx},${y} L${cx + w / 2},${y + chevronH}`}
-            fill="none"
-            stroke={gold}
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        );
-      })}
-      {/* Rockers (arc below) */}
-      {rockerCount > 0 && Array.from({ length: rockerCount }).map((_, i) => {
-        const y = startY + chevronCount * (chevronH + gap) + 4 + i * (chevronH + gap);
-        return (
-          <path
-            key={`r-${i}`}
-            d={`M${cx - w / 2},${y} Q${cx},${y + chevronH + 2} ${cx + w / 2},${y}`}
-            fill="none"
-            stroke={gold}
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-        );
-      })}
-    </g>
-  );
-}
-
-function ShieldShape({ rank, size }: { rank: string; size: number }) {
-  const c = seriesColors.watchman;
-  return (
-    <svg viewBox="0 0 200 240" width={size} height={size * 1.2} xmlns="http://www.w3.org/2000/svg">
-      {/* Outer shield */}
-      <path
-        d="M100 10 L185 50 L185 140 Q185 200 100 230 Q15 200 15 140 L15 50 Z"
-        fill={c.fill}
-        stroke={c.border}
-        strokeWidth="6"
-      />
-      {/* Inner border inset (sewn patch look) */}
-      <path
-        d="M100 22 L175 56 L175 138 Q175 194 100 220 Q25 194 25 138 L25 56 Z"
-        fill="none"
-        stroke={c.border}
-        strokeWidth="2"
-        opacity="0.5"
-        strokeDasharray="4 3"
-      />
-      {/* Top arc decoration */}
-      <path
-        d="M55 52 Q100 38 145 52"
-        fill="none"
-        stroke={c.gold}
-        strokeWidth="1.5"
-        opacity="0.7"
-      />
-      {/* P22 mark */}
-      <text
-        x="100"
-        y="78"
-        textAnchor="middle"
-        fill={c.gold}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="900"
-        fontSize="22"
-        letterSpacing="2"
-      >
-        P22
-      </text>
-      {/* Series name */}
-      <text
-        x="100"
-        y="98"
-        textAnchor="middle"
-        fill={c.gold}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="700"
-        fontSize="12"
-        letterSpacing="3"
-        opacity="0.8"
-      >
-        WATCHMAN
-      </text>
-      {/* Divider line */}
-      <line x1="60" y1="106" x2="140" y2="106" stroke={c.gold} strokeWidth="1" opacity="0.5" />
-      {/* Chevron insignia */}
-      <WatchmanChevrons rank={rank} cx={100} cy={140} />
-      {/* Rank label */}
-      <text
-        x="100"
-        y="195"
-        textAnchor="middle"
-        fill={c.text}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="600"
-        fontSize="11"
-        letterSpacing="1.5"
-        opacity="0.9"
-      >
-        {rank.replace(/-/g, ' ').toUpperCase()}
-      </text>
-    </svg>
-  );
-}
-
-// Covenant: Faith-based circle with cross motif
-function CovenantCross({ cx, cy, rankLevel }: { cx: number; cy: number; rankLevel: number }) {
-  const gold = '#84754E';
-  const baseSize = 18;
-  const armW = 4;
-
-  return (
-    <g>
-      {/* Central cross */}
-      <rect x={cx - armW / 2} y={cy - baseSize} width={armW} height={baseSize * 2} fill={gold} />
-      <rect x={cx - baseSize * 0.7} y={cy - armW / 2} width={baseSize * 1.4} height={armW} fill={gold} />
-      {/* Rank adornment rings */}
-      {rankLevel >= 1 && (
-        <circle cx={cx} cy={cy} r={28} fill="none" stroke={gold} strokeWidth="1.5" opacity="0.6" />
-      )}
-      {rankLevel >= 2 && (
-        <circle cx={cx} cy={cy} r={34} fill="none" stroke={gold} strokeWidth="1" opacity="0.4" />
-      )}
-      {rankLevel >= 3 && (
-        <>
-          {/* Corner accent dots */}
-          <circle cx={cx - 22} cy={cy - 22} r={2.5} fill={gold} opacity="0.7" />
-          <circle cx={cx + 22} cy={cy - 22} r={2.5} fill={gold} opacity="0.7" />
-          <circle cx={cx - 22} cy={cy + 22} r={2.5} fill={gold} opacity="0.7" />
-          <circle cx={cx + 22} cy={cy + 22} r={2.5} fill={gold} opacity="0.7" />
-        </>
-      )}
-      {rankLevel >= 4 && (
-        <>
-          {/* Radiating lines from cross */}
-          <line x1={cx - 12} y1={cy - 12} x2={cx - 20} y2={cy - 20} stroke={gold} strokeWidth="1.5" opacity="0.6" />
-          <line x1={cx + 12} y1={cy - 12} x2={cx + 20} y2={cy - 20} stroke={gold} strokeWidth="1.5" opacity="0.6" />
-          <line x1={cx - 12} y1={cy + 12} x2={cx - 20} y2={cy + 20} stroke={gold} strokeWidth="1.5" opacity="0.6" />
-          <line x1={cx + 12} y1={cy + 12} x2={cx + 20} y2={cy + 20} stroke={gold} strokeWidth="1.5" opacity="0.6" />
-        </>
-      )}
-    </g>
-  );
-}
-
-function CircleShape({ rank, size }: { rank: string; size: number }) {
-  const c = seriesColors.covenant;
-  const rankLevel =
-    rank === 'field-chapel' ? 0 :
-    rank === 'mission-chapel' ? 1 :
-    rank === 'battalion-chapel' ? 2 :
-    rank === 'regimental-chapel' ? 3 :
-    rank === 'command-chapel' ? 4 : 0;
-
-  return (
-    <svg viewBox="0 0 200 200" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
-      {/* Outer circle with gold border */}
-      <circle cx="100" cy="100" r="92" fill={c.fill} stroke={c.border} strokeWidth="5" />
-      {/* Inner stitched border */}
-      <circle cx="100" cy="100" r="82" fill="none" stroke={c.border} strokeWidth="1.5" strokeDasharray="4 3" opacity="0.5" />
-      {/* Top arc text path */}
-      <path id="topArc" d="M35,100 A65,65 0 0,1 165,100" fill="none" />
-      <text fill={c.gold} fontFamily="'Barlow Condensed', sans-serif" fontWeight="700" fontSize="11" letterSpacing="3">
-        <textPath href="#topArc" startOffset="50%" textAnchor="middle">COVENANT</textPath>
-      </text>
-      {/* P22 mark */}
-      <text
-        x="100"
-        y="72"
-        textAnchor="middle"
-        fill={c.gold}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="900"
-        fontSize="16"
-        letterSpacing="1"
-      >
-        P22
-      </text>
-      {/* Cross motif with rank adornments */}
-      <CovenantCross cx={100} cy={110} rankLevel={rankLevel} />
-      {/* Rank label */}
-      <text
-        x="100"
-        y="170"
-        textAnchor="middle"
-        fill={c.text}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="600"
-        fontSize="10"
-        letterSpacing="1.5"
-        opacity="0.9"
-      >
-        {rank.replace(/-/g, ' ').toUpperCase()}
-      </text>
-    </svg>
-  );
-}
-
-// Vanguard: Officer rank insignia
-function OfficerInsignia({ rank, cx, cy }: { rank: string; cx: number; cy: number }) {
-  const gold = '#84754E';
-  const silver = '#C0C0C0';
-
-  if (rank === 'field-ally') {
-    // Single vertical bar (2LT style)
-    return <rect x={cx - 3} y={cy - 14} width={6} height={28} fill={gold} rx="1" />;
-  }
-
-  if (rank === 'tactical-partner') {
-    // Double vertical bars (1LT/CPT style)
-    return (
-      <g>
-        <rect x={cx - 10} y={cy - 14} width={6} height={28} fill={gold} rx="1" />
-        <rect x={cx + 4} y={cy - 14} width={6} height={28} fill={gold} rx="1" />
-      </g>
-    );
-  }
-
-  if (rank === 'strategic-command') {
-    // Oak leaf cluster (MAJ/LTC style)
-    return (
-      <g>
-        <ellipse cx={cx} cy={cy} rx={10} ry={14} fill={silver} opacity="0.9" />
-        {/* Leaf veins */}
-        <line x1={cx} y1={cy - 12} x2={cx} y2={cy + 12} stroke={gold} strokeWidth="1" opacity="0.6" />
-        <line x1={cx - 7} y1={cy - 4} x2={cx + 7} y2={cy + 4} stroke={gold} strokeWidth="0.8" opacity="0.5" />
-        <line x1={cx - 7} y1={cy + 4} x2={cx + 7} y2={cy - 4} stroke={gold} strokeWidth="0.8" opacity="0.5" />
-        {/* Side lobes */}
-        <ellipse cx={cx - 12} cy={cy - 6} rx={5} ry={7} fill={silver} opacity="0.7" />
-        <ellipse cx={cx + 12} cy={cy - 6} rx={5} ry={7} fill={silver} opacity="0.7" />
-        <ellipse cx={cx - 12} cy={cy + 6} rx={5} ry={7} fill={silver} opacity="0.7" />
-        <ellipse cx={cx + 12} cy={cy + 6} rx={5} ry={7} fill={silver} opacity="0.7" />
-      </g>
-    );
-  }
-
-  if (rank === 'operational-command') {
-    // Single star (BG style)
-    return (
-      <polygon
-        points={starPoints(cx, cy, 16, 7)}
-        fill={gold}
-      />
-    );
-  }
-
-  if (rank === 'general-partner') {
-    // Two stars (MG style)
-    return (
-      <g>
-        <polygon points={starPoints(cx - 14, cy, 12, 5)} fill={gold} />
-        <polygon points={starPoints(cx + 14, cy, 12, 5)} fill={gold} />
-      </g>
-    );
-  }
-
-  return null;
-}
+const SCARLET = '#940000';
+const GOLD = '#84754E';
+const DARK_BG = '#001E2E';
+const SILVER = '#A8A9AD';
+const WHITE = '#FFFFFF';
+const CREAM = '#D4C9A8';
 
 function starPoints(cx: number, cy: number, outerR: number, innerR: number): string {
   const points: string[] = [];
@@ -315,66 +22,272 @@ function starPoints(cx: number, cy: number, outerR: number, innerR: number): str
   return points.join(' ');
 }
 
-function PentagonShape({ rank, size }: { rank: string; size: number }) {
-  const c = seriesColors.vanguard;
+function ShieldShape({ rank, size }: { rank: string; size: number }) {
+  const rankIndex =
+    rank === 'recruit' ? 0 :
+    rank === 'pvt-1st-class' ? 1 :
+    rank === 'corporal' ? 2 :
+    rank === 'sergeant' ? 3 :
+    rank === 'staff-sergeant' ? 4 :
+    rank === 'master-sergeant' ? 5 : 0;
+
+  const isSenior = rankIndex >= 3;
+  const borderColor = isSenior ? GOLD : SCARLET;
+  const isMasterSgt = rank === 'master-sergeant';
+
+  const chevronCount =
+    rank === 'recruit' ? 0 :
+    rank === 'pvt-1st-class' ? 1 :
+    rank === 'corporal' ? 2 : 3;
+
+  const rockerCount =
+    rank === 'staff-sergeant' ? 1 :
+    rank === 'master-sergeant' ? 2 : 0;
+
   return (
-    <svg viewBox="0 0 200 210" width={size} height={size * 1.05} xmlns="http://www.w3.org/2000/svg">
-      {/* Outer pentagon */}
-      <polygon
-        points="100,10 190,72 155,185 45,185 10,72"
-        fill={c.fill}
-        stroke={c.border}
-        strokeWidth="5"
+    <svg viewBox="0 0 200 240" width={size} height={size * 1.2} xmlns="http://www.w3.org/2000/svg">
+      {isMasterSgt && (
+        <path
+          d="M100 6 L189 48 L189 144 Q189 206 100 236 Q11 206 11 144 L11 48 Z"
+          fill="none"
+          stroke={SCARLET}
+          strokeWidth="4"
+        />
+      )}
+      <path
+        d="M100 10 L185 50 L185 140 Q185 200 100 230 Q15 200 15 140 L15 50 Z"
+        fill={DARK_BG}
+        stroke={borderColor}
+        strokeWidth="6"
       />
-      {/* Inner stitched border */}
-      <polygon
-        points="100,24 178,78 147,178 53,178 22,78"
+      <path
+        d="M100 22 L175 56 L175 138 Q175 194 100 220 Q25 194 25 138 L25 56 Z"
         fill="none"
-        stroke={c.border}
+        stroke={borderColor}
         strokeWidth="1.5"
+        opacity="0.3"
         strokeDasharray="4 3"
-        opacity="0.5"
       />
-      {/* P22 mark */}
+
+      {/* P22 gold star at top */}
+      <polygon
+        points={starPoints(100, 48, 10, 4)}
+        fill={GOLD}
+      />
+
+      {rank === 'recruit' ? (
+        <rect x={86} y={120} width={28} height={4} fill={GOLD} rx="1" />
+      ) : (
+        <g>
+          {Array.from({ length: chevronCount }).map((_, i) => {
+            const cy = 95 + i * 16;
+            return (
+              <path
+                key={`c-${i}`}
+                d={`M68,${cy + 12} L100,${cy} L132,${cy + 12}`}
+                fill="none"
+                stroke={GOLD}
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            );
+          })}
+          {rockerCount > 0 && Array.from({ length: rockerCount }).map((_, i) => {
+            const cy = 95 + chevronCount * 16 + 10 + i * 14;
+            return (
+              <path
+                key={`r-${i}`}
+                d={`M68,${cy} Q100,${cy + 14} 132,${cy}`}
+                fill="none"
+                stroke={GOLD}
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+            );
+          })}
+        </g>
+      )}
+
       <text
-        x="100"
-        y="68"
+        x="100" y="210"
         textAnchor="middle"
-        fill={c.gold}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="900"
-        fontSize="18"
-        letterSpacing="2"
-      >
-        P22
-      </text>
-      {/* Series name */}
-      <text
-        x="100"
-        y="86"
-        textAnchor="middle"
-        fill={c.gold}
-        fontFamily="'Barlow Condensed', sans-serif"
-        fontWeight="700"
-        fontSize="11"
-        letterSpacing="3"
-        opacity="0.8"
-      >
-        VANGUARD
-      </text>
-      {/* Divider */}
-      <line x1="60" y1="93" x2="140" y2="93" stroke={c.gold} strokeWidth="1" opacity="0.5" />
-      {/* Officer insignia */}
-      <OfficerInsignia rank={rank} cx={100} cy={125} />
-      {/* Rank label */}
-      <text
-        x="100"
-        y="168"
-        textAnchor="middle"
-        fill={c.text}
+        fill={WHITE}
         fontFamily="'Barlow Condensed', sans-serif"
         fontWeight="600"
         fontSize="10"
+        letterSpacing="1.5"
+        opacity="0.9"
+      >
+        {rank.replace(/-/g, ' ').toUpperCase()}
+      </text>
+    </svg>
+  );
+}
+
+function CircleShape({ rank, size }: { rank: string; size: number }) {
+  const rankLevel =
+    rank === 'field-chapel' ? 0 :
+    rank === 'mission-chapel' ? 1 :
+    rank === 'battalion-chapel' ? 2 :
+    rank === 'regimental-chapel' ? 3 :
+    rank === 'command-chapel' ? 4 : 0;
+
+  const isHighRank = rankLevel >= 3;
+  const isTop = rankLevel === 4;
+  const crossColor = isHighRank ? GOLD : CREAM;
+
+  return (
+    <svg viewBox="0 0 200 200" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+      {isTop && (
+        <circle cx="100" cy="100" r="96" fill="none" stroke={GOLD} strokeWidth="3" />
+      )}
+      <circle cx="100" cy="100" r="92" fill={DARK_BG} stroke={GOLD} strokeWidth="5" />
+      <circle cx="100" cy="100" r="82" fill="none" stroke={GOLD} strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3" />
+
+      {/* Cross */}
+      <rect x={95} y={60} width={10} height={60} fill={crossColor} rx="1" />
+      <rect x={72} y={85} width={56} height={10} fill={crossColor} rx="1" />
+
+      {isHighRank && (
+        <circle cx="100" cy="90" r="35" fill="none" stroke={GOLD} strokeWidth="2" opacity="0.5" />
+      )}
+
+      {/* Stars around the cross based on rank */}
+      {rankLevel >= 1 && (
+        <polygon points={starPoints(100, 135, 7, 3)} fill={GOLD} />
+      )}
+      {rankLevel >= 2 && (
+        <>
+          <polygon points={starPoints(62, 90, 6, 2.5)} fill={GOLD} />
+          <polygon points={starPoints(138, 90, 6, 2.5)} fill={GOLD} />
+        </>
+      )}
+      {rankLevel >= 3 && (
+        <>
+          <polygon points={starPoints(78, 67, 5, 2)} fill={GOLD} />
+          <polygon points={starPoints(122, 67, 5, 2)} fill={GOLD} />
+          <polygon points={starPoints(78, 113, 5, 2)} fill={GOLD} />
+          <polygon points={starPoints(122, 113, 5, 2)} fill={GOLD} />
+        </>
+      )}
+      {rankLevel >= 4 && (
+        <>
+          <polygon points={starPoints(100, 55, 5, 2)} fill={GOLD} />
+          <polygon points={starPoints(70, 78, 4, 1.5)} fill={GOLD} />
+          <polygon points={starPoints(130, 78, 4, 1.5)} fill={GOLD} />
+          <polygon points={starPoints(70, 102, 4, 1.5)} fill={GOLD} />
+          <polygon points={starPoints(130, 102, 4, 1.5)} fill={GOLD} />
+        </>
+      )}
+
+      <text
+        x="100" y="170"
+        textAnchor="middle"
+        fill={WHITE}
+        fontFamily="'Barlow Condensed', sans-serif"
+        fontWeight="600"
+        fontSize="9"
+        letterSpacing="1.5"
+        opacity="0.9"
+      >
+        {rank.replace(/-/g, ' ').toUpperCase()}
+      </text>
+    </svg>
+  );
+}
+
+function PentagonShape({ rank, size }: { rank: string; size: number }) {
+  const rankIndex =
+    rank === 'field-ally' ? 0 :
+    rank === 'tactical-partner' ? 1 :
+    rank === 'strategic-command' ? 2 :
+    rank === 'operational-command' ? 3 :
+    rank === 'general-partner' ? 4 : 0;
+
+  const isOfficer = rankIndex >= 2;
+  const borderColor = isOfficer ? GOLD : SILVER;
+  const isGeneral = rank === 'general-partner';
+
+  return (
+    <svg viewBox="0 0 200 210" width={size} height={size * 1.05} xmlns="http://www.w3.org/2000/svg">
+      {isGeneral && (
+        <polygon
+          points="100,6 194,70 159,189 41,189 6,70"
+          fill="none"
+          stroke={SCARLET}
+          strokeWidth="4"
+        />
+      )}
+      <polygon
+        points="100,10 190,72 155,185 45,185 10,72"
+        fill="#1a1a2e"
+        stroke={borderColor}
+        strokeWidth="5"
+      />
+      <polygon
+        points="100,24 178,78 147,178 53,178 22,78"
+        fill="none"
+        stroke={borderColor}
+        strokeWidth="1.5"
+        strokeDasharray="4 3"
+        opacity="0.3"
+      />
+
+      {/* P22 star at top */}
+      <polygon
+        points={starPoints(100, 55, 8, 3)}
+        fill={GOLD}
+      />
+
+      {/* Insignia */}
+      {rank === 'field-ally' && (
+        <rect x={96} y={82} width={8} height={32} fill={GOLD} rx="1" />
+      )}
+      {rank === 'tactical-partner' && (
+        <g>
+          <rect x={88} y={82} width={8} height={32} fill={GOLD} rx="1" />
+          <rect x={104} y={82} width={8} height={32} fill={GOLD} rx="1" />
+        </g>
+      )}
+      {rank === 'strategic-command' && (
+        <g>
+          {/* Star with wings - eagle/aviator style */}
+          <polygon points={starPoints(100, 100, 12, 5)} fill={GOLD} />
+          {/* Wings */}
+          <path d="M88,100 Q75,88 58,92 Q70,96 82,100" fill={GOLD} opacity="0.9" />
+          <path d="M112,100 Q125,88 142,92 Q130,96 118,100" fill={GOLD} opacity="0.9" />
+          <path d="M85,103 Q72,95 55,98 Q68,100 80,103" fill={GOLD} opacity="0.7" />
+          <path d="M115,103 Q128,95 145,98 Q132,100 120,103" fill={GOLD} opacity="0.7" />
+        </g>
+      )}
+      {rank === 'operational-command' && (
+        <g>
+          {/* Larger eagle with spread wings */}
+          <polygon points={starPoints(100, 97, 10, 4)} fill={GOLD} />
+          {/* Wide spread wings */}
+          <path d="M90,97 Q72,80 50,82 Q65,90 82,97" fill={GOLD} />
+          <path d="M110,97 Q128,80 150,82 Q135,90 118,97" fill={GOLD} />
+          <path d="M87,102 Q70,90 48,92 Q63,96 80,102" fill={GOLD} opacity="0.8" />
+          <path d="M113,102 Q130,90 152,92 Q137,96 120,102" fill={GOLD} opacity="0.8" />
+          {/* Tail feathers */}
+          <path d="M94,108 Q100,120 106,108" fill={GOLD} opacity="0.8" />
+        </g>
+      )}
+      {rank === 'general-partner' && (
+        <g>
+          {/* Single large general's star */}
+          <polygon points={starPoints(100, 105, 26, 11)} fill={GOLD} />
+        </g>
+      )}
+
+      <text
+        x="100" y="172"
+        textAnchor="middle"
+        fill={WHITE}
+        fontFamily="'Barlow Condensed', sans-serif"
+        fontWeight="600"
+        fontSize="9"
         letterSpacing="1.5"
         opacity="0.9"
       >
