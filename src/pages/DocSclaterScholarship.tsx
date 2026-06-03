@@ -101,7 +101,7 @@ export function DocSclaterScholarship() {
             The "Doc" Sclater Scholarship
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            Funding career development training for veterans and first responders -- honoring Doc's legacy by continuing what he did best.
+            Funding career development training for veterans and first responders — honoring Doc's legacy by continuing what he did best.
           </p>
           <p className="text-base text-slate-400">
             Hosted by Project 22
@@ -122,10 +122,10 @@ export function DocSclaterScholarship() {
                 Carrying Forward Doc's Mission
               </h3>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Jamie "Doc" Sclater believed that every veteran deserved access to world-class training and a clear path to a meaningful career after service. As a senior instructor at ESS Academy, he spent his days turning that belief into reality -- training veterans in executive protection, tactical medicine, and the full spectrum of professional security.
+                Jamie "Doc" Sclater believed that every veteran deserved access to world-class training and a clear path to a meaningful career after service. As a senior instructor at ESS Academy, he spent his days turning that belief into reality — training veterans in executive protection, tactical medicine, and the full spectrum of professional security.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                The "Doc" Sclater Scholarship honors his legacy by funding career development training for veterans and first responders through Project 22. Donations to the scholarship fund may be applied to any of the career training programs we offer -- giving recipients the flexibility to pursue the path that's right for them.
+                The "Doc" Sclater Scholarship honors his legacy by funding career development training for veterans and first responders through Project 22. Donations to the scholarship fund may be applied to any of the career training programs we offer — giving recipients the flexibility to pursue the path that's right for them.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
                 Every dollar donated goes directly toward tuition, training materials, and the support services that help our heroes graduate with real certifications, real skills, and a real career ahead of them.
@@ -167,7 +167,7 @@ export function DocSclaterScholarship() {
           {/* ESS Academy Partner Donation */}
           <div className="mt-12 bg-white rounded-brand border-2 border-brand-gold/40 p-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-brand-gold/10 px-4 py-1 rounded-bl-brand">
-              <span className="text-xs font-semibold text-brand-gold uppercase tracking-wider">Partner Contribution</span>
+              <span className="text-xs font-semibold text-brand-gold uppercase tracking-wider">Annual Partner Contribution</span>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-20 h-20 bg-brand-gold rounded-full flex items-center justify-center flex-shrink-0">
@@ -175,7 +175,7 @@ export function DocSclaterScholarship() {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h4 className="text-2xl font-display text-slate-900 mb-2">ESS Academy — Training Partner</h4>
-                <p className="text-slate-600 mb-3">ESS Academy has donated one full All-in-One Executive Protection Advanced training to the Doc Sclater Scholarship -- a 24-day immersive program valued at $8,650 covering every aspect of executive protection.</p>
+                <p className="text-slate-600 mb-3">ESS Academy donates one full All-in-One Executive Protection Advanced training each year to the Doc Sclater Scholarship — a 24-day immersive program valued at $8,650 covering every aspect of executive protection.</p>
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">
                   <span className="flex items-center gap-1 text-slate-600">
                     <DollarSign className="w-4 h-4 text-brand-gold" /> $8,650 Value

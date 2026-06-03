@@ -303,7 +303,7 @@ export function VeteranApply() {
               Your New Career Starts Here
             </h1>
             <p className="text-xl text-slate-200 leading-relaxed mb-8">
-              Apply for a scholarship that covers your full training and job placement. No cost to you -- just commitment, courage, and the willingness to take the next step.
+              Apply for a scholarship that covers your full training and job placement. No cost to you — just commitment, courage, and the willingness to take the next step.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
@@ -627,7 +627,7 @@ export function VeteranApply() {
               <FileUpload
                 accept="video/*"
                 label="Upload Your Video"
-                hint="MP4, MOV, or WebM -- 1-2 minutes recommended"
+                hint="MP4, MOV, or WebM — 1-2 minutes recommended"
                 icon="video"
                 maxSizeMB={100}
                 file={video}

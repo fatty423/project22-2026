@@ -67,7 +67,7 @@ export function PersonalDevelopment() {
               Personal Development
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              Holistic support addressing spirit, soul, and body -- because lasting transformation goes far beyond career training
+              Holistic support addressing spirit, soul, and body — because lasting transformation goes far beyond career training
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ export function PersonalDevelopment() {
               A Day in the Life
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Every day is structured with intention -- building discipline, community, and growth from morning to evening
+              Every day is structured with intention — building discipline, community, and growth from morning to evening
             </p>
           </div>
 
@@ -167,13 +167,13 @@ export function PersonalDevelopment() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-slate-900 mb-6">
-                More Than Training -- Transformation
+                More Than Training — Transformation
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Many of our participants arrive carrying the invisible weight of service -- PTSD, depression, loss of identity, broken relationships. Our personal development program does not just teach skills. It helps rebuild lives.
+                Many of our participants arrive carrying the invisible weight of service — PTSD, depression, loss of identity, broken relationships. Our personal development program does not just teach skills. It helps rebuild lives.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Through a combination of professional counseling, peer mentorship, physical fitness, and spiritual support, we create an environment where healing happens naturally alongside career preparation. You are not just becoming employable -- you are becoming whole again.
+                Through a combination of professional counseling, peer mentorship, physical fitness, and spiritual support, we create an environment where healing happens naturally alongside career preparation. You are not just becoming employable — you are becoming whole again.
               </p>
               <div className="flex items-center gap-3 bg-brand-marine/5 border border-brand-marine/10 rounded-xl p-4">
                 <Clock className="w-6 h-6 text-brand-marine flex-shrink-0" />

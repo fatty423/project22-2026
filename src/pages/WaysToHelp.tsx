@@ -265,7 +265,7 @@ export function WaysToHelp() {
               Become a Monthly Supporter
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Recurring donations provide sustainable support -- and earn you a digital Partner Patch
+              Recurring donations provide sustainable support — and earn you a digital Partner Patch
             </p>
           </div>
 

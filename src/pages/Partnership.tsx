@@ -240,7 +240,7 @@ export function Partnership() {
                 Wellness & Family Support
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Supporting the whole person -- spirit, soul, and body -- alongside career training
+                Supporting the whole person — spirit, soul, and body — alongside career training
               </p>
             </div>
 

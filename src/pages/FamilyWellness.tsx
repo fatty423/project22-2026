@@ -7,12 +7,12 @@ const services = [
   {
     icon: Heart,
     title: 'Marriage & Couples Intensives',
-    description: 'Weekend intensive experiences designed to help couples reconnect, heal, and restore their relationship from the inside out -- addressing the heart behind the brokenness.',
+    description: 'Weekend intensive experiences designed to help couples reconnect, heal, and restore their relationship from the inside out — addressing the heart behind the brokenness.',
   },
   {
     icon: Compass,
     title: 'Faith-Centered Restoration',
-    description: 'Guided by the belief that lasting change begins within, our approach tends to the heart first -- helping families rediscover purpose, identity, and the sacred simplicity of living together.',
+    description: 'Guided by the belief that lasting change begins within, our approach tends to the heart first — helping families rediscover purpose, identity, and the sacred simplicity of living together.',
   },
   {
     icon: DollarSign,
@@ -42,19 +42,19 @@ const services = [
   {
     icon: Sparkles,
     title: 'Scholarship-Backed Retreats',
-    description: 'Through generous sponsorship, couples who might not otherwise afford a transformative weekend intensive can attend at no cost -- removing financial barriers to healing.',
+    description: 'Through generous sponsorship, couples who might not otherwise afford a transformative weekend intensive can attend at no cost — removing financial barriers to healing.',
   },
 ];
 
 const approach = [
   {
     title: 'Start from the Inside Out',
-    description: 'If we look at the brokenness found within the human heart, we can trace it back to the place the heart called home. True restoration begins by tending to what is deepest -- not just managing symptoms, but addressing root causes within the family.',
+    description: 'If we look at the brokenness found within the human heart, we can trace it back to the place the heart called home. True restoration begins by tending to what is deepest — not just managing symptoms, but addressing root causes within the family.',
     icon: Heart,
   },
   {
     title: 'Restore the Sacred Simplicity',
-    description: 'Families today are overwhelmed by complexity. Our approach strips away the noise and returns to what matters most -- genuine connection, honest communication, and a shared sense of purpose rooted in faith.',
+    description: 'Families today are overwhelmed by complexity. Our approach strips away the noise and returns to what matters most — genuine connection, honest communication, and a shared sense of purpose rooted in faith.',
     icon: TreePine,
   },
   {
@@ -68,7 +68,7 @@ const journey = [
   {
     phase: 'During Application',
     title: 'Families Are Welcomed In',
-    description: 'From day one, we want to understand your family situation. Our intake process identifies how we can support the whole household -- not just the individual enrollee.',
+    description: 'From day one, we want to understand your family situation. Our intake process identifies how we can support the whole household — not just the individual enrollee.',
   },
   {
     phase: 'During Training',
@@ -94,7 +94,7 @@ const testimonials = [
     role: 'Spouse Support Group Member',
   },
   {
-    quote: 'My kids finally got to see their dad confident and happy again. Project 22 did not just change his career -- they changed our family.',
+    quote: 'My kids finally got to see their dad confident and happy again. Project 22 did not just change his career — they changed our family.',
     name: 'Program Family',
     role: 'Family Wellness Participant',
   },
@@ -116,7 +116,7 @@ export function FamilyWellness() {
               Family Wellness
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              When a hero heals, the whole family heals. In partnership with A Place for Family, we tend to the heart of every household -- restoring families to the sacred simplicity of living life from the inside out.
+              When a hero heals, the whole family heals. In partnership with A Place for Family, we tend to the heart of every household — restoring families to the sacred simplicity of living life from the inside out.
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ export function FamilyWellness() {
                 Tending to the Heart of the Family
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                If we look at the brokenness found within the human heart, we can trace it back to the place the heart called home. Behind every veteran and first responder is a family that has also sacrificed -- spouses who held things together, children who missed birthdays, parents who worried every day.
+                If we look at the brokenness found within the human heart, we can trace it back to the place the heart called home. Behind every veteran and first responder is a family that has also sacrificed — spouses who held things together, children who missed birthdays, parents who worried every day.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
                 Through our partnership with <span className="font-semibold text-slate-900">A Place for Family</span>, we bring a restoration-focused, faith-centered approach to family wellness. Their philosophy is simple yet profound: lasting transformation starts from the inside out, addressing the root of brokenness rather than just the symptoms.
@@ -199,14 +199,14 @@ export function FamilyWellness() {
                 Meet Theo Koulianos
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Theo Koulianos is the founder of <span className="font-semibold text-slate-900">A Place for Family</span> -- a ministry dedicated to restoring families from the inside out. His heart for healing is rooted in the belief that the brokenness we see in the world can be traced back to the brokenness within the home.
+                Theo Koulianos is the founder of <span className="font-semibold text-slate-900">A Place for Family</span> — a ministry dedicated to restoring families from the inside out. His heart for healing is rooted in the belief that the brokenness we see in the world can be traced back to the brokenness within the home.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Through his partnership with Project 22, Theo brings couples intensives, faith-centered restoration, and scholarship-backed retreats to veteran and first responder families -- ensuring that healing reaches every member of the household.
+                Through his partnership with Project 22, Theo brings couples intensives, faith-centered restoration, and scholarship-backed retreats to veteran and first responder families — ensuring that healing reaches every member of the household.
               </p>
               <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
                 <p className="text-slate-700 italic leading-relaxed">
-                  "If we tend to the heart of the family, we tend to the heart of everything. Lasting change does not begin with programs -- it begins at home."
+                  "If we tend to the heart of the family, we tend to the heart of everything. Lasting change does not begin with programs — it begins at home."
                 </p>
                 <p className="text-sm font-semibold text-slate-500 mt-3">-- Theo Koulianos</p>
               </div>
@@ -222,7 +222,7 @@ export function FamilyWellness() {
               Our Approach to Restoration
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Guided by A Place for Family's philosophy, we believe healing begins at the deepest level -- in the heart, in the home, in the family
+              Guided by A Place for Family's philosophy, we believe healing begins at the deepest level — in the heart, in the home, in the family
             </p>
           </div>
 
@@ -330,7 +330,7 @@ export function FamilyWellness() {
             Your Family Matters to Us
           </h2>
           <p className="text-xl mb-8 text-white/80 max-w-2xl mx-auto">
-            When you apply to Project 22, you are not just enrolling yourself -- you are bringing your whole family into a community that tends to the heart. Reach out today.
+            When you apply to Project 22, you are not just enrolling yourself — you are bringing your whole family into a community that tends to the heart. Reach out today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

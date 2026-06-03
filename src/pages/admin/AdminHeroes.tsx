@@ -410,7 +410,7 @@ function EditMilestonesModal({ veteran, onClose, onSaved }: EditModalProps) {
             />
             <div>
               <h2 className="text-lg font-bold text-slate-900">
-                {veteran.first_name} {veteran.last_initial}. -- Milestones
+                {veteran.first_name} {veteran.last_initial}. — Milestones
               </h2>
               <p className="text-xs text-slate-500">{veteran.military_branch}</p>
             </div>

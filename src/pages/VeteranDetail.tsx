@@ -461,7 +461,7 @@ export function VeteranDetail() {
                 <ol className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-brand-marine rounded-full flex items-center justify-center text-xs font-bold text-white">1</span>
-                    <span>Choose your contribution amount -- any amount helps.</span>
+                    <span>Choose your contribution amount — any amount helps.</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-brand-marine rounded-full flex items-center justify-center text-xs font-bold text-white">2</span>
