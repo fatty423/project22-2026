@@ -89,19 +89,19 @@ export function DonorRecognitionSection() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-2 mb-8">
+        <div className="grid grid-cols-3 gap-2 mb-8 max-w-md mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-brand text-sm font-semibold transition-all duration-200 ${
+              className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-brand text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === tab.id
                   ? 'bg-brand-marine text-white shadow-md'
                   : 'bg-white text-slate-600 border border-slate-200 hover:border-brand-marine hover:text-brand-marine'
               }`}
             >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
+              <tab.icon className="w-4 h-4 flex-shrink-0" />
+              <span className="truncate">{tab.label}</span>
             </button>
           ))}
         </div>
