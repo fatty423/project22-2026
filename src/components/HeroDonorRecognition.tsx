@@ -49,13 +49,13 @@ function getTier(amount: number): { label: string; badge: string; text: string; 
   };
 }
 
-function getWatchmanRank(amount: number): string {
-  if (amount >= 12000) return 'master-sergeant';
-  if (amount >= 6000) return 'staff-sergeant';
-  if (amount >= 3000) return 'sergeant';
-  if (amount >= 1200) return 'corporal';
-  if (amount >= 600) return 'pvt-1st-class';
-  return 'recruit';
+function getWatchmanRank(amount: number): { rank: string; label: string } {
+  if (amount >= 1000) return { rank: 'master-sergeant', label: 'Master Sergeant' };
+  if (amount >= 500) return { rank: 'staff-sergeant', label: 'Staff Sergeant' };
+  if (amount >= 250) return { rank: 'sergeant', label: 'Sergeant' };
+  if (amount >= 100) return { rank: 'corporal', label: 'Corporal' };
+  if (amount >= 50) return { rank: 'pvt-1st-class', label: 'Pvt 1st Class' };
+  return { rank: 'recruit', label: 'Recruit' };
 }
 
 function getInitials(name: string): string {
@@ -157,15 +157,17 @@ export function HeroDonorRecognition({ veteranId, veteranFirstName }: HeroDonorR
           <ul className="space-y-2 max-h-80 overflow-y-auto pr-1">
             {donors.map((donor, idx) => {
               const tier = getTier(Number(donor.total_amount));
+              const watchman = getWatchmanRank(Number(donor.total_amount));
               return (
                 <li
                   key={`${donor.donor_display_name}-${idx}`}
                   className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group"
                 >
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 flex flex-col items-center">
                     <span title={`$${Number(donor.total_amount).toFixed(0)} contributed`} className="cursor-pointer">
-                      <PatchBadge series="watchman" rank={getWatchmanRank(Number(donor.total_amount))} size={36} />
+                      <PatchBadge series="watchman" rank={watchman.rank} size={36} />
                     </span>
+                    <span className="text-[8px] font-semibold text-brand-gold mt-0.5 uppercase tracking-wide">{watchman.label}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
