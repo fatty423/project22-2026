@@ -9,6 +9,7 @@ type HeroDonor = {
   total_amount: number;
   latest_donation_at: string;
   is_monthly: boolean;
+  overall_total: number;
 };
 
 interface HeroDonorRecognitionProps {
@@ -157,7 +158,7 @@ export function HeroDonorRecognition({ veteranId, veteranFirstName }: HeroDonorR
           <ul className="space-y-2 max-h-80 overflow-y-auto pr-1">
             {donors.map((donor, idx) => {
               const tier = getTier(Number(donor.total_amount));
-              const watchman = getWatchmanRank(Number(donor.total_amount));
+              const watchman = getWatchmanRank(Number(donor.overall_total ?? donor.total_amount));
               return (
                 <li
                   key={`${donor.donor_display_name}-${idx}`}
