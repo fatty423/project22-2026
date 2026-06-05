@@ -104,6 +104,7 @@ export type Database = {
           phone: string | null;
           is_monthly_donor: boolean;
           total_contributed: number;
+          monthly_amount: number;
           created_at: string;
           updated_at: string;
         };

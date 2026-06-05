@@ -20,7 +20,8 @@ const orgPatchMap: Record<string, { series: 'watchman' | 'covenant' | 'vanguard'
 const corporateNames = ['ESS Global Corp', 'Fourth Watch', 'Sponge Labs'];
 const faithNames = ['A Place for Family', 'Fellowship of Believers'];
 
-function getWatchmanRank(amount: number): { rank: string; label: string } {
+function getWatchmanRank(monthlyAmount: number, totalContributed: number): { rank: string; label: string } {
+  const amount = monthlyAmount > 0 ? monthlyAmount : totalContributed;
   if (amount >= 1000) return { rank: 'master-sergeant', label: 'Master Sergeant' };
   if (amount >= 500) return { rank: 'staff-sergeant', label: 'Staff Sergeant' };
   if (amount >= 250) return { rank: 'sergeant', label: 'Sergeant' };
@@ -110,7 +111,7 @@ export function DonorRecognitionSection() {
         {activeTab === 'individual' && (
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-12">
             {individualDonors.map((donor) => {
-              const watchman = getWatchmanRank(donor.total_contributed);
+              const watchman = getWatchmanRank(donor.monthly_amount ?? 0, donor.total_contributed);
               return (
                 <div
                   key={donor.id}

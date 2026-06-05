@@ -306,6 +306,7 @@ async function recordDonation(session: Stripe.Checkout.Session, customerId: stri
         email: donorEmail,
         is_monthly_donor: isSubscription,
         total_contributed: donationAmount,
+        monthly_amount: isSubscription ? donationAmount : 0,
       });
 
       if (donorError) {
@@ -317,6 +318,7 @@ async function recordDonation(session: Stripe.Checkout.Session, customerId: stri
       const updates: Record<string, unknown> = { total_contributed: newTotal };
       if (isSubscription) {
         updates.is_monthly_donor = true;
+        updates.monthly_amount = donationAmount;
       }
       const { error: updateError } = await supabase
         .from('donors')

@@ -154,7 +154,7 @@ export function DonorPortal() {
     .reduce((sum, d) => sum + d.amount, 0);
 
   const monthlyDonations = donations.filter((d) => d.is_recurring);
-  const monthlyTotal = monthlyDonations.reduce((sum, d) => sum + d.amount, 0);
+  const monthlyAmount = donor?.monthly_amount ?? (monthlyDonations.length > 0 ? monthlyDonations[0].amount : 0);
 
   const hasActiveSubscription = subscription &&
     subscription.status === 'active' &&
@@ -162,8 +162,8 @@ export function DonorPortal() {
 
   const lastDonation = donations.find((d) => d.status === 'succeeded');
 
-  const donorRank = getDonorRank(monthlyTotal, totalDonated);
-  const { next: nextRank, percentToNext } = getRankProgress(monthlyTotal, totalDonated);
+  const donorRank = getDonorRank(monthlyAmount, totalDonated);
+  const { next: nextRank, percentToNext } = getRankProgress(monthlyAmount, totalDonated);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -204,7 +204,7 @@ export function DonorPortal() {
           <div className="grid md:grid-cols-4 gap-6">
             <StatCard icon={DollarSign} label="Total Donated" value={`$${totalDonated.toFixed(0)}`} color="blue" />
             <StatCard icon={Heart} label="Heroes Sponsored" value={String(sponsorships.length)} color="green" />
-            <StatCard icon={Calendar} label="Monthly Giving" value={`$${monthlyTotal.toFixed(0)}`} color="sky" />
+            <StatCard icon={Calendar} label="Monthly Giving" value={`$${monthlyAmount.toFixed(0)}`} color="sky" />
             <StatCard icon={TrendingUp} label="Total Donations" value={String(donations.length)} color="yellow" />
           </div>
         </div>
