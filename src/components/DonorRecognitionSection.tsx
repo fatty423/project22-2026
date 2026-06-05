@@ -123,9 +123,11 @@ export function DonorRecognitionSection() {
                     <p className="text-[10px] font-semibold text-brand-gold uppercase tracking-wide">{watchman.label}</p>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <p className="text-sm font-bold text-slate-900">${donor.total_contributed}</p>
+                    <p className="text-sm font-bold text-slate-900">
+                      ${donor.is_monthly_donor && donor.monthly_amount ? donor.monthly_amount : donor.total_contributed}
+                    </p>
                     {donor.is_monthly_donor && (
-                      <span className="text-[9px] font-semibold uppercase tracking-wide text-emerald-600">Monthly</span>
+                      <span className="text-[9px] font-semibold uppercase tracking-wide text-emerald-600">/month</span>
                     )}
                   </div>
                 </div>
