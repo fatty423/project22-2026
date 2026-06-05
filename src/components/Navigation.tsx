@@ -6,6 +6,11 @@ import { useAppNavigate } from '../hooks/useAppNavigate';
 import { getPath } from '../lib/routes';
 import { Button } from './ui/Button';
 
+const aboutDropdownItems = [
+  { id: 'about', label: 'About Us' },
+  { id: 'expert-instructors', label: 'Expert Instructors' },
+];
+
 const dropdownItems = [
   { id: 'programs', label: 'Training Programs' },
   { id: 'services', label: 'Services' },
@@ -13,15 +18,17 @@ const dropdownItems = [
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [howWeHelpOpen, setHowWeHelpOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileHowWeHelpOpen, setMobileHowWeHelpOpen] = useState(false);
+  const aboutDropdownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { user, signOut } = useAuth();
   const navigate = useAppNavigate();
   const { pathname } = useLocation();
 
   const navItems = [
-    { id: 'about', label: 'About Us' },
     { id: 'impact', label: 'Our Impact' },
     { id: 'heroes', label: 'Heroes Directory' },
     { id: 'partnership', label: 'Partnership' },
@@ -29,10 +36,14 @@ export function Navigation() {
   ];
 
   const isActive = (pageId: string) => pathname === getPath(pageId);
+  const isAboutActive = isActive('about') || isActive('expert-instructors');
   const isHowWeHelpActive = isActive('programs') || isActive('services');
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target as Node)) {
+        setAboutOpen(false);
+      }
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setHowWeHelpOpen(false);
       }
@@ -44,7 +55,9 @@ export function Navigation() {
   const handleNavClick = (pageId: string) => {
     navigate(pageId);
     setMobileMenuOpen(false);
+    setAboutOpen(false);
     setHowWeHelpOpen(false);
+    setMobileAboutOpen(false);
     setMobileHowWeHelpOpen(false);
   };
 
@@ -66,16 +79,38 @@ export function Navigation() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
-            <button
-              onClick={() => handleNavClick('about')}
-              className={`font-semibold uppercase text-sm tracking-wide transition-colors duration-200 ${
-                isActive('about')
-                  ? 'text-brand-scarlet'
-                  : 'text-brand-marine hover:text-brand-scarlet'
-              }`}
-            >
-              About Us
-            </button>
+            <div ref={aboutDropdownRef} className="relative">
+              <button
+                onClick={() => setAboutOpen(!aboutOpen)}
+                className={`font-semibold uppercase text-sm tracking-wide transition-colors duration-200 flex items-center gap-1 ${
+                  isAboutActive
+                    ? 'text-brand-scarlet'
+                    : 'text-brand-marine hover:text-brand-scarlet'
+                }`}
+              >
+                About
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {aboutOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-white rounded-brand shadow-xl border border-slate-200 py-2 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-slate-200 rotate-45" />
+                  {aboutDropdownItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`block w-full text-left px-5 py-2.5 text-sm font-semibold uppercase tracking-wide transition-colors duration-150 ${
+                        isActive(item.id)
+                          ? 'text-brand-scarlet bg-red-50'
+                          : 'text-brand-marine hover:text-brand-scarlet hover:bg-slate-50'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div ref={dropdownRef} className="relative">
               <button
@@ -110,7 +145,7 @@ export function Navigation() {
               )}
             </div>
 
-            {navItems.slice(1).map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
@@ -183,16 +218,36 @@ export function Navigation() {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t-2 border-brand-marine bg-white">
           <div className="px-4 py-4 space-y-1">
-            <button
-              onClick={() => handleNavClick('about')}
-              className={`block w-full text-left px-4 py-2 rounded-brand transition-colors duration-200 font-semibold uppercase text-sm tracking-wide ${
-                isActive('about')
-                  ? 'bg-red-50 text-brand-scarlet'
-                  : 'text-brand-marine hover:bg-slate-50'
-              }`}
-            >
-              About Us
-            </button>
+            <div>
+              <button
+                onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                className={`flex items-center justify-between w-full text-left px-4 py-2 rounded-brand transition-colors duration-200 font-semibold uppercase text-sm tracking-wide ${
+                  isAboutActive
+                    ? 'bg-red-50 text-brand-scarlet'
+                    : 'text-brand-marine hover:bg-slate-50'
+                }`}
+              >
+                About
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAboutOpen && (
+                <div className="ml-4 mt-1 space-y-1 border-l-2 border-brand-scarlet pl-4">
+                  {aboutDropdownItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`block w-full text-left px-4 py-2 rounded-brand text-sm font-semibold uppercase tracking-wide transition-colors duration-200 ${
+                        isActive(item.id)
+                          ? 'bg-red-50 text-brand-scarlet'
+                          : 'text-brand-marine hover:bg-slate-50'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div>
               <button
@@ -225,7 +280,7 @@ export function Navigation() {
               )}
             </div>
 
-            {navItems.slice(1).map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}

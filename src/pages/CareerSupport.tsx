@@ -42,6 +42,7 @@ const services = [
 const salaryRanges = [
   { role: 'Security Officer', range: '$35,000 - $50,000', growth: 'Entry Level' },
   { role: 'Armed Security Specialist', range: '$45,000 - $65,000', growth: 'Mid Level' },
+  { role: 'Private Investigator', range: '$50,000 - $85,000', growth: 'Mid Level' },
   { role: 'Executive Protection Agent', range: '$60,000 - $120,000', growth: 'Advanced' },
   { role: 'Overseas Security Contractor', range: '$80,000 - $200,000+', growth: 'Specialized' },
 ];

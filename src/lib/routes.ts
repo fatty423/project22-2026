@@ -17,6 +17,7 @@ export const ROUTES: Record<string, string> = {
   sponsor: '/sponsor',
   donate: '/donate',
   patches: '/partner-patches',
+  'expert-instructors': '/expert-instructors',
   'doc-sclater': '/doc-sclater',
   'doc-sclater-scholarship': '/doc-sclater-scholarship',
   'admin-login': '/admin/login',
