@@ -228,10 +228,23 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
       return;
     }
 
-    await supabase
+    const { data: donor } = await supabase
       .from('donors')
-      .update({ is_monthly_donor: true })
+      .select('total_contributed')
+      .eq('id', donorId)
+      .maybeSingle();
+
+    const newTotal = Number(donor?.total_contributed || 0) + amountPaid;
+    const { error: updateError } = await supabase
+      .from('donors')
+      .update({ is_monthly_donor: true, total_contributed: newTotal })
       .eq('id', donorId);
+
+    if (updateError) {
+      console.error('Error updating donor total:', updateError);
+    } else {
+      console.info(`Updated donor ${donorId}: total_contributed now $${newTotal}`);
+    }
 
     if (veteranId) {
       await applySponsorshipProgress({
@@ -270,11 +283,21 @@ async function recordDonation(session: Stripe.Checkout.Session, customerId: stri
 
     const { data: existingDonor } = await supabase
       .from('donors')
-      .select('id, full_name')
+      .select('id, full_name, total_contributed')
       .eq('id', userId)
       .maybeSingle();
 
     let donorName = donorEmail.split('@')[0];
+
+    // Try to get the real name from Stripe customer
+    try {
+      const stripeCustomer = await stripe.customers.retrieve(customerId);
+      if (stripeCustomer && !stripeCustomer.deleted && stripeCustomer.name) {
+        donorName = stripeCustomer.name;
+      }
+    } catch (err) {
+      console.error('Failed to retrieve Stripe customer name:', err);
+    }
 
     if (!existingDonor) {
       const { error: donorError } = await supabase.from('donors').insert({
@@ -290,15 +313,20 @@ async function recordDonation(session: Stripe.Checkout.Session, customerId: stri
       }
     } else {
       donorName = existingDonor.full_name || donorName;
+      const newTotal = Number(existingDonor.total_contributed || 0) + donationAmount;
+      const updates: Record<string, unknown> = { total_contributed: newTotal };
       if (isSubscription) {
-        const { error: updateError } = await supabase
-          .from('donors')
-          .update({ is_monthly_donor: true })
-          .eq('id', userId);
+        updates.is_monthly_donor = true;
+      }
+      const { error: updateError } = await supabase
+        .from('donors')
+        .update(updates)
+        .eq('id', userId);
 
-        if (updateError) {
-          console.error('Error updating donor monthly status:', updateError);
-        }
+      if (updateError) {
+        console.error('Error updating donor record:', updateError);
+      } else {
+        console.info(`Updated donor ${donorName}: total_contributed now $${newTotal}`);
       }
     }
 
