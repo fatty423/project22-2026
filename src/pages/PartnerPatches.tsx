@@ -143,7 +143,7 @@ export function PartnerPatches() {
     if (['watchman', 'covenant', 'vanguard'].includes(hash)) {
       setActiveSeries(hash);
       setTimeout(() => {
-        document.getElementById('patch-series')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('choose-path')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
     }
   }, [location.hash]);

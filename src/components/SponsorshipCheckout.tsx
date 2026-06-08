@@ -113,11 +113,17 @@ export function SponsorshipCheckout({ veteran, isOpen, onClose }: SponsorshipChe
 
         <div className="bg-slate-50 rounded-xl p-5">
           <h4 className="font-semibold text-slate-900 mb-3">Funding Progress</h4>
-          <div className="w-full bg-slate-200 rounded-full h-2.5 mb-3">
+          <div className="w-full bg-slate-200 rounded-full h-2.5 mb-3 relative overflow-hidden">
             <div
-              className="bg-brand-marine h-2.5 rounded-full transition-all"
+              className="absolute inset-y-0 left-0 bg-brand-marine rounded-full transition-all"
               style={{ width: `${fundingBarPercent(veteran.sponsorship_amount_raised, veteran.sponsorship_amount_needed)}%` }}
             />
+            {isValidAmount && (
+              <div
+                className="absolute inset-y-0 left-0 bg-brand-marine/30 rounded-full transition-all duration-300"
+                style={{ width: `${Math.min(fundingBarPercent(veteran.sponsorship_amount_raised + activeAmount, veteran.sponsorship_amount_needed), 100)}%` }}
+              />
+            )}
           </div>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
@@ -133,6 +139,14 @@ export function SponsorshipCheckout({ veteran, isOpen, onClose }: SponsorshipChe
               <p className="font-bold text-brand-marine">${remaining.toFixed(0)}</p>
             </div>
           </div>
+          {isValidAmount && (
+            <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-sm">
+              <span className="text-slate-500">With your contribution</span>
+              <span className="font-bold text-brand-marine">
+                {Math.min(Math.round(((veteran.sponsorship_amount_raised + activeAmount) / veteran.sponsorship_amount_needed) * 100), 100)}% funded
+              </span>
+            </div>
+          )}
         </div>
 
         <div>

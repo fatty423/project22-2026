@@ -165,20 +165,12 @@ export function Impact() {
               {successStories.map((story) => (
                 <Card key={story.id} hover>
                   {story.video_placeholder_url && (
-                    <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden mb-4 group">
+                    <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden mb-4">
                       <img
                         src={story.video_placeholder_url}
                         alt={story.name}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-50 transition-all duration-300">
-                        <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <Play className="w-8 h-8 text-brand-scarlet ml-1" />
-                        </div>
-                      </div>
-                      <div className="absolute top-3 right-3 bg-brand-scarlet text-white px-2 py-1 rounded text-xs font-bold">
-                        VIDEO
-                      </div>
                     </div>
                   )}
                   <div className="flex items-center gap-3 mb-4">

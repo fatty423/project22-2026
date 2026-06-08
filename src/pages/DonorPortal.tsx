@@ -172,7 +172,7 @@ export function DonorPortal() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-6">
               {donorRank && (
-                <div className="hidden sm:flex flex-col items-center">
+                <div className="flex flex-col items-center">
                   <PatchBadge series={donorRank.series} rank={donorRank.rank} size={80} />
                   <span className="text-xs text-brand-gold font-semibold mt-1 tracking-wide uppercase">{donorRank.label}</span>
                 </div>

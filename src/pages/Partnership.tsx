@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Building2, Users, GraduationCap, Church, CheckCircle, Mail, Shield, Heart, Loader2, ExternalLink } from 'lucide-react';
+import { Building2, Users, GraduationCap, Church, CheckCircle, Mail, Shield, Heart, Loader2, ExternalLink, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PatchBadge } from '../components/patches/PatchBadge';
 import { Card } from '../components/ui/Card';
@@ -122,6 +122,17 @@ export function Partnership() {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
   const hasScrolled = useRef(false);
+  const [inquiryForm, setInquiryForm] = useState({
+    orgName: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    orgType: '',
+    message: '',
+  });
+  const [inquirySubmitting, setInquirySubmitting] = useState(false);
+  const [inquirySubmitted, setInquirySubmitted] = useState(false);
+  const [inquiryError, setInquiryError] = useState('');
 
   useEffect(() => {
     async function fetchPartners() {
@@ -203,7 +214,46 @@ export function Partnership() {
 
   const handleContactClick = (type: string) => {
     setPartnerType(type);
+    setInquirySubmitted(false);
+    setInquiryError('');
     setShowContactModal(true);
+  };
+
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setInquirySubmitting(true);
+    setInquiryError('');
+
+    try {
+      const subject = partnerType
+        ? `Partnership Inquiry: ${partnerType}`
+        : 'Partnership Inquiry';
+
+      const fullMessage = [
+        `Organization: ${inquiryForm.orgName}`,
+        `Type: ${inquiryForm.orgType || 'Not specified'}`,
+        partnerType ? `Interested in: ${partnerType}` : '',
+        '',
+        inquiryForm.message,
+      ].filter(Boolean).join('\n');
+
+      const { error } = await supabase.from('contact_messages').insert({
+        name: inquiryForm.contactName.trim(),
+        email: inquiryForm.email.trim(),
+        phone: inquiryForm.phone.trim(),
+        subject: subject,
+        message: fullMessage.trim(),
+      });
+
+      if (error) throw error;
+
+      setInquirySubmitted(true);
+      setInquiryForm({ orgName: '', contactName: '', email: '', phone: '', orgType: '', message: '' });
+    } catch {
+      setInquiryError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setInquirySubmitting(false);
+    }
   };
 
   return (
@@ -404,74 +454,113 @@ export function Partnership() {
         title="Partnership Inquiry"
         maxWidth="lg"
       >
-        <div className="space-y-6">
-          <p className="text-slate-600">
-            Fill out the form below and our partnership team will contact you within 2 business days.
-          </p>
-
-          {partnerType && (
-            <div className="bg-brand-marine/5 border border-brand-marine/10 rounded-lg p-4">
-              <p className="text-sm font-medium text-brand-marine">
-                Interested in: <span className="font-bold">{partnerType}</span>
-              </p>
-            </div>
-          )}
-
-          <div className="space-y-4">
-            <Input
-              type="text"
-              label="Organization Name"
-              placeholder="Your organization name"
-              required
-            />
-            <Input
-              type="text"
-              label="Contact Name"
-              placeholder="Your full name"
-              required
-            />
-            <Input
-              type="email"
-              label="Email Address"
-              placeholder="your@email.com"
-              required
-            />
-            <Input
-              type="tel"
-              label="Phone Number"
-              placeholder="(555) 123-4567"
-              required
-            />
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Organization Type
-              </label>
-              <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-marine focus:border-transparent">
-                <option value="">Select type</option>
-                <option value="corporate">Corporate</option>
-                <option value="faith">Faith Community</option>
-                <option value="education">Educational Institution</option>
-                <option value="nonprofit">Non-Profit Organization</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Message
-              </label>
-              <textarea
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-marine focus:border-transparent"
-                rows={4}
-                placeholder="Tell us about your interest in partnering with Project 22..."
-              />
-            </div>
+        {inquirySubmitted ? (
+          <div className="py-8 text-center">
+            <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Inquiry Submitted</h3>
+            <p className="text-slate-600 mb-6">
+              Thank you for your interest! Our partnership team will contact you within 2 business days.
+            </p>
+            <Button onClick={() => setShowContactModal(false)}>
+              Close
+            </Button>
           </div>
+        ) : (
+          <form onSubmit={handleInquirySubmit} className="space-y-6">
+            <p className="text-slate-600">
+              Fill out the form below and our partnership team will contact you within 2 business days.
+            </p>
 
-          <Button fullWidth size="lg">
-            <Mail className="w-5 h-5 mr-2" />
-            Submit Inquiry
-          </Button>
-        </div>
+            {partnerType && (
+              <div className="bg-brand-marine/5 border border-brand-marine/10 rounded-lg p-4">
+                <p className="text-sm font-medium text-brand-marine">
+                  Interested in: <span className="font-bold">{partnerType}</span>
+                </p>
+              </div>
+            )}
+
+            <div className="space-y-4">
+              <Input
+                type="text"
+                label="Organization Name"
+                placeholder="Your organization name"
+                required
+                value={inquiryForm.orgName}
+                onChange={(e) => setInquiryForm({ ...inquiryForm, orgName: e.target.value })}
+              />
+              <Input
+                type="text"
+                label="Contact Name"
+                placeholder="Your full name"
+                required
+                value={inquiryForm.contactName}
+                onChange={(e) => setInquiryForm({ ...inquiryForm, contactName: e.target.value })}
+              />
+              <Input
+                type="email"
+                label="Email Address"
+                placeholder="your@email.com"
+                required
+                value={inquiryForm.email}
+                onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
+              />
+              <Input
+                type="tel"
+                label="Phone Number"
+                placeholder="(555) 123-4567"
+                required
+                value={inquiryForm.phone}
+                onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
+              />
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Organization Type
+                </label>
+                <select
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-marine focus:border-transparent"
+                  value={inquiryForm.orgType}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, orgType: e.target.value })}
+                >
+                  <option value="">Select type</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Faith Community">Faith Community</option>
+                  <option value="Educational Institution">Educational Institution</option>
+                  <option value="Non-Profit Organization">Non-Profit Organization</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Message
+                </label>
+                <textarea
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-marine focus:border-transparent"
+                  rows={4}
+                  placeholder="Tell us about your interest in partnering with Project 22..."
+                  value={inquiryForm.message}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
+                />
+              </div>
+            </div>
+
+            {inquiryError && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {inquiryError}
+              </div>
+            )}
+
+            <Button type="submit" fullWidth size="lg" loading={inquirySubmitting} disabled={inquirySubmitting}>
+              {inquirySubmitting ? (
+                'Submitting...'
+              ) : (
+                <>
+                  <Send className="w-5 h-5 mr-2" />
+                  Submit Inquiry
+                </>
+              )}
+            </Button>
+          </form>
+        )}
       </Modal>
     </div>
   );
