@@ -15,10 +15,11 @@ const orgPatchMap: Record<string, { series: 'watchman' | 'covenant' | 'vanguard'
   'Sponge Labs': { series: 'vanguard', rank: 'tactical-partner', label: 'Tactical Partner', amount: '$5,000/yr' },
   'Fellowship of Believers': { series: 'covenant', rank: 'mission-chapel', label: 'Mission Chapel', amount: '$1,500/yr' },
   'Fellowship Church': { series: 'covenant', rank: 'field-chapel', label: 'Field Chapel', amount: '$500/yr' },
+  'Jesus Image Church': { series: 'covenant', rank: 'battalion-chapel', label: 'Battalion Chapel', amount: '$5,000' },
 };
 
 const corporateNames = ['ESS Global Corp', 'Fourth Watch', 'Sponge Labs'];
-const faithNames = ['A Place for Family', 'Fellowship of Believers'];
+const faithNames = ['A Place for Family', 'Fellowship of Believers', 'Jesus Image Church'];
 
 function getWatchmanRank(monthlyAmount: number, totalContributed: number): { rank: string; label: string } {
   const amount = monthlyAmount > 0 ? monthlyAmount : totalContributed;
